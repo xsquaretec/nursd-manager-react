@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/nursd-manager-react/static/css/main.4887191f.css",
+    "main.js": "/nursd-manager-react/static/js/main.76864df7.js",
+    "static/media/logo.svg": "/nursd-manager-react/static/media/logo.3a6ae6b6fb24b3d76425cb0f3e22494c.svg",
+    "static/media/dashboard_bg.png": "/nursd-manager-react/static/media/dashboard_bg.cf50140b62323adb26bc.png",
+    "static/media/Nurse.svg": "/nursd-manager-react/static/media/Nurse.06be60f4ad825deaed160feb784ebd45.svg",
+    "static/media/Agencies.svg": "/nursd-manager-react/static/media/Agencies.70a030391c9c00db7747b4216f29d45d.svg",
+    "index.html": "/nursd-manager-react/index.html",
+    "main.4887191f.css.map": "/nursd-manager-react/static/css/main.4887191f.css.map",
+    "main.76864df7.js.map": "/nursd-manager-react/static/js/main.76864df7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4887191f.css",
+    "static/js/main.76864df7.js"
+  ]
+}
