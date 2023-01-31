@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/nursd-manager-react/static/css/main.4887191f.css",
-    "main.js": "/nursd-manager-react/static/js/main.7a405953.js",
+    "main.js": "/nursd-manager-react/static/js/main.be9c8147.js",
     "static/media/logo.svg": "/nursd-manager-react/static/media/logo.3a6ae6b6fb24b3d76425cb0f3e22494c.svg",
     "static/media/dashboard_bg.png": "/nursd-manager-react/static/media/dashboard_bg.cf50140b62323adb26bc.png",
-    "static/media/Nurse.svg": "/nursd-manager-react/static/media/Nurse.06be60f4ad825deaed160feb784ebd45.svg",
-    "static/media/Agencies.svg": "/nursd-manager-react/static/media/Agencies.70a030391c9c00db7747b4216f29d45d.svg",
+    "static/media/Agencies.svg": "/nursd-manager-react/static/media/Agencies.85dd1ec422cbc53f4133ffa17c512294.svg",
+    "static/media/Nurse.svg": "/nursd-manager-react/static/media/Nurse.68c348107883aabc0692d4d4135d678b.svg",
     "index.html": "/nursd-manager-react/index.html",
     "main.4887191f.css.map": "/nursd-manager-react/static/css/main.4887191f.css.map",
-    "main.7a405953.js.map": "/nursd-manager-react/static/js/main.7a405953.js.map"
+    "main.be9c8147.js.map": "/nursd-manager-react/static/js/main.be9c8147.js.map"
   },
   "entrypoints": [
     "static/css/main.4887191f.css",
-    "static/js/main.7a405953.js"
+    "static/js/main.be9c8147.js"
   ]
 }
