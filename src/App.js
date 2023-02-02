@@ -3,10 +3,9 @@ import { ColorModeContext, useMode } from "./theme/theme";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import AdminNavbar from "./components/AdminNavbar";
 import AdminSidebar from "./components/AdminSidebar";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import MainRoutes from "./routes/MainRoutes";
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -17,19 +16,17 @@ const App = () => {
         <CssBaseline />
         <Box height="100vh" overflow="hidden">
           <AdminNavbar />
-          <Box display="flex" gap={2} height="100%">
+          <Box display="flex" gap={2} height="100%" sx={{backgroundColor : "transparent"}}>
             <AdminSidebar />
             <Box
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1 , backgroundColor : "transparent" }}
               p={1}
               height="95vh"
               bgcolor="white"
               mr={2}
             >
               <PerfectScrollbar>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                </Routes>
+                <MainRoutes />
               </PerfectScrollbar>
             </Box>
           </Box>

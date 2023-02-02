@@ -9,11 +9,11 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const MUIList = ({ item, style }) => {
-  const pathname = useParams();
+const MUIList = ({ item: pageData, style }) => {
+  const location = useLocation();
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -24,6 +24,16 @@ const MUIList = ({ item, style }) => {
     setOpen(!open);
   };
 
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (pageData !== []) {
+      pageData.menu.map((item) => {
+        return item.link === "/all-agency-admin" && setActive(true);
+      });
+    }
+  }, [pageData]);
+
   return (
     <List>
       <ListItemButton
@@ -31,10 +41,11 @@ const MUIList = ({ item, style }) => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          padding: 1,
+          padding: 1.5,
           pl: 1.5,
           borderRadius: 2,
           color: colors.primary[500],
+          backgroundColor: active && "#fff",
 
           "&:hover": {
             backgroundColor: "#ffffff",
@@ -48,13 +59,13 @@ const MUIList = ({ item, style }) => {
           gap={1}
           fontWeight={500}
         >
-          {item.icon} <span style={style}>{item.name}</span>
+          {pageData.icon} <span style={style}>{pageData.name}</span>
         </Typography>
         <span style={style}> {open ? <ExpandLess /> : <ExpandMore />}</span>
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {item.menu.map((item, index) => {
+          {pageData.menu.map((item, index) => {
             return (
               <Link
                 to={item.link}
@@ -63,10 +74,10 @@ const MUIList = ({ item, style }) => {
               >
                 <ListItemButton
                   sx={{
-                    padding: 1.5,
+                    padding: 1,
                     pl: 5,
                     borderRadius: 2,
-                    backgroundColor: pathname === item.link && "white",
+                    backgroundColor: location.pathname === item.link && "white",
                     color: colors.primary[500],
                     my: 0.5,
 

@@ -23,9 +23,9 @@ export const sidebarAPI = [
     name: "User Manage",
     icon: <PeopleAltIcon />,
     menu: [
+      { name: "Agency Admin", link: "/all-agency-admin" },
+      { name: "Managers", link: "/all-agency-manager" },
       { name: "Nurse", link: "/" },
-      { name: "Managers", link: "/" },
-      { name: "Agency Admin", link: "/" },
     ],
   },
   {

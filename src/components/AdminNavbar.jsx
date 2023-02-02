@@ -1,16 +1,18 @@
-import { Box, useTheme } from "@mui/material";
-import React from "react";
+import { Box, IconButton, useTheme } from "@mui/material";
+import React, { useContext } from "react";
 import Logo from "../assets/logo.svg";
 import MenuIcon from "@mui/icons-material/Menu";
-import { tokens } from "../theme/theme";
+import { ColorModeContext, tokens } from "../theme/theme";
 // eslint-disable-next-line
 import MUI_Icon from "./CustomMui/MUI_Icon";
 import { useDispatch } from "react-redux";
 import { changeSidebar } from "../redux/sidebarSlice";
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 const AdminNavbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const colorMode = useContext(ColorModeContext);
 
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ const AdminNavbar = () => {
   return (
     <Box display="flex" alignItems="center" gap={1} bgcolor="#B6B6B664">
       <Box
-        width={"300px"}
+        minWidth={"300px"}
         p={0.5}
         px={2}
         bgcolor={colors.secondary[700]}
@@ -37,8 +39,36 @@ const AdminNavbar = () => {
           onClick={() => handleChange()}
         />
       </Box>
-      <Box p={1} px={2}>
-        Menu Here
+      <Box
+        p={1}
+        px={2}
+        className="w-full"
+        display="flex"
+        justifyContent="space-between"
+      >
+        <Box></Box>
+        <Box>
+          <IconButton
+            TouchRippleProps={{
+              style: {
+                backgroundColor: colors.primary[500] + "22",
+              },
+            }}
+            sx={{
+              borderRadius: 2,
+              color: colors.primary[500],
+              fontSize: 18,
+              padding: 1,
+            }}
+            onClick={colorMode.toggleColorMode}
+          >
+            {theme.palette.mode == "light" ? (
+              <DarkModeOutlined />
+            ) : (
+              <LightModeOutlined />
+            )}
+          </IconButton>
+        </Box>
       </Box>
     </Box>
   );

@@ -1,12 +1,14 @@
-import { tokens } from "../theme/theme";
+import { ColorModeContext, tokens } from "../theme/theme";
 import { useTheme } from "@emotion/react";
 import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import DashBG from "../assets/dashboard_bg.png";
 import Nurse from "../assets/Nurse.svg";
 import Agencies from "../assets/Agencies.svg";
 
 export const DashboardCard = ({ title, icon, count }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   return (
     <Box
       p={2}
@@ -27,9 +29,9 @@ export const DashboardCard = ({ title, icon, count }) => {
         <Typography variant="h2" fontWeight={700} sx={{ color: "#1082CB" }}>
           {count}
         </Typography>
-        <Typography variant="h5">{title}</Typography>
+        <Typography color={colors.text[900]} variant="h5">{title}</Typography>
       </Box>
-      <img src={icon} alt="" style={{height : 100}} />
+      <img src={icon} alt="" style={{ height: 100 }} />
     </Box>
   );
 };
