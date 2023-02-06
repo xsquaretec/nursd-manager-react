@@ -29,10 +29,10 @@ const MUIList = ({ item: pageData, style }) => {
   useEffect(() => {
     if (pageData !== []) {
       pageData.menu.map((item) => {
-        return item.link === "/all-agency-admin" && setActive(true);
+        return item.link === location.pathname && setActive(true);
       });
     }
-  }, [pageData]);
+  }, [pageData, location.pathname]);
 
   return (
     <List>

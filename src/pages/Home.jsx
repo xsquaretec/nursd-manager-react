@@ -1,7 +1,7 @@
-import { ColorModeContext, tokens } from "../theme/theme";
+import { tokens } from "../theme/theme";
 import { useTheme } from "@emotion/react";
 import { Box, Grid, Typography } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import DashBG from "../assets/dashboard_bg.png";
 import Nurse from "../assets/Nurse.svg";
 import Agencies from "../assets/Agencies.svg";
@@ -29,7 +29,9 @@ export const DashboardCard = ({ title, icon, count }) => {
         <Typography variant="h2" fontWeight={700} sx={{ color: "#1082CB" }}>
           {count}
         </Typography>
-        <Typography color={colors.text[900]} variant="h5">{title}</Typography>
+        <Typography color={colors.text[900]} variant="h5">
+          {title}
+        </Typography>
       </Box>
       <img src={icon} alt="" style={{ height: 100 }} />
     </Box>
@@ -40,7 +42,28 @@ const Home = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  return (
+  const [pageData, setPageData] = useState([]);
+
+  const getData = async () => {
+    await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminDashboard`, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => setPageData(res.data))
+      .then(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const [loading, setLoading] = useState(true);
+
+  return loading ? (
+    "Loading..."
+  ) : (
     <Box mt={1} sx={{ flexGrow: 1 }}>
       <Typography
         mb={2}
@@ -53,13 +76,13 @@ const Home = () => {
 
       <Grid container spacing={5} mb={5}>
         <Grid item xs={4}>
-          <DashboardCard title="Total Agencies" count={20} icon={Nurse} />
+          <DashboardCard title="Total Agencies" count={pageData.totlaAgencyAdmin} icon={Agencies} />
         </Grid>
         <Grid item xs={4}>
-          <DashboardCard title="Total Nurses" count={60} icon={Agencies} />
+          <DashboardCard title="Total Nurses" count={pageData.totalNurse} icon={Nurse} />
         </Grid>
         <Grid item xs={4}>
-          <DashboardCard title="Total Jobs" count={20} />
+          <DashboardCard title="Total Jobs" count={pageData.totalPostedJobs} />
         </Grid>
       </Grid>
 

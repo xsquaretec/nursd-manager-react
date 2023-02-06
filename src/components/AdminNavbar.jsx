@@ -62,7 +62,7 @@ const AdminNavbar = () => {
             }}
             onClick={colorMode.toggleColorMode}
           >
-            {theme.palette.mode == "light" ? (
+            {theme.palette.mode === "light" ? (
               <DarkModeOutlined />
             ) : (
               <LightModeOutlined />

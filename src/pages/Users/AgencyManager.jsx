@@ -10,15 +10,16 @@ const AgencyManager = () => {
 
   const getData = async () => {
     await fetch(
-      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?role=admin`,
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?role=manager`,
       {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGEwNjBkNzFlZmViZTMxYzlmMDg3OSIsImVtYWlsIjoiZGV2YW5zaEB4c3F1YXJldGVjLmNvbSIsInBob25lTnVtYmVyIjoiKzkxOTE1NzI3MTg5NiIsInJvbGUiOiJtYW5hZ2VyIiwiaXNBY2NvdW50VmVyaWZpZWQiOnRydWUsImlhdCI6MTY3NTMxNzIzMiwiZXhwIjoxNjc3OTA5MjMyfQ.D6W99ek3QtlG6nPZwxt67HgrJxXBpnZ0fM367XzVZ5w`,
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
         },
       }
     )
       .then((res) => res.json())
-      .then((res) => setPageData(res.data));
+      .then((res) => setPageData(res.data))
+      .then(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -78,6 +79,9 @@ const AgencyManager = () => {
     },
   ];
 
+  const [loading, setLoading] = useState(true);
+
+
   return (
     <Box sx={{ height: "90%", width: "100%" }}>
       <Heading title="Agency Manager Details" />
@@ -94,6 +98,7 @@ const AgencyManager = () => {
         components={{
           Toolbar: GridToolbar,
         }}
+        loading={loading}
       />
     </Box>
   );

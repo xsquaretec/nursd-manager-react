@@ -2,7 +2,7 @@ import { Typography, useTheme } from "@mui/material";
 // import { usePathname } from "next/navigation";
 import React from "react";
 import { tokens } from "../theme/theme";
-import CustomBreadcrumbs from "./CustomBreadcrumbs";
+// import CustomBreadcrumbs from "./CustomBreadcrumbs";
 
 const Heading = ({ title }) => {
   // const pathname = usePathname();

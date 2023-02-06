@@ -25,7 +25,7 @@ export const sidebarAPI = [
     menu: [
       { name: "Agency Admin", link: "/all-agency-admin" },
       { name: "Managers", link: "/all-agency-manager" },
-      { name: "Nurse", link: "/" },
+      { name: "Nurse", link: "/all-nurse" },
     ],
   },
   {
@@ -51,7 +51,7 @@ export const sidebarAPI = [
   {
     name: "Customer Support",
     icon: <SupportAgentIcon />,
-    link: "/superAdmin/appMaintenance",
+    link: "/customer-support",
   },
   {
     name: "Mobile App Management",
