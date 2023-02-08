@@ -27,9 +27,10 @@ const MUIList = ({ item: pageData, style }) => {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
+    setActive(false);
     if (pageData !== []) {
       pageData.menu.map((item) => {
-        return item.link === location.pathname && setActive(true);
+        return location.pathname.includes(item.link) && setActive(true);
       });
     }
   }, [pageData, location.pathname]);

@@ -2,7 +2,7 @@
 import { tokens } from "../theme/theme";
 import { useTheme } from "@emotion/react";
 import { Box, Divider, ListItemButton, Typography } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React from "react";
 import { sidebarAPI } from "../localAPI/SidebarAPI";
 import MUIList from "./CustomMui/MUI_List";
@@ -14,7 +14,7 @@ const AdminSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const pathname = useParams();
+  const location = useLocation();
 
   const sidebarData = useSelector((state) => state.sidebar);
 
@@ -25,6 +25,7 @@ const AdminSidebar = () => {
       height="100%"
     >
       <Divider color="#fff" sx={{ height: "1px" }} />
+
       <PerfectScrollbar>
         <Box p={1} px={2} mt={1}>
           {sidebarAPI.map((item, index) => {
@@ -37,7 +38,8 @@ const AdminSidebar = () => {
                         mt: 1,
                         padding: 1.5,
                         borderRadius: 2,
-                        backgroundColor: pathname === item.link && "white",
+                        backgroundColor:
+                          location.pathname === item.link && "white",
                         color: colors.primary[500],
 
                         "&:hover": {

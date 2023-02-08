@@ -4,9 +4,9 @@ import WorkIcon from "@mui/icons-material/Work";
 import AppSettingsAltIcon from "@mui/icons-material/AppSettingsAlt";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import ReviewsIcon from '@mui/icons-material/Reviews';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import TextFieldsIcon from '@mui/icons-material/TextFields';
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import TextFieldsIcon from "@mui/icons-material/TextFields";
 
 export const sidebarAPI = [
   {
@@ -32,20 +32,20 @@ export const sidebarAPI = [
     name: "Jobs",
     icon: <WorkIcon />,
     menu: [
-      { name: "Posted Jobs", link: "/" },
-      { name: "Accepted Jobs", link: "/" },
-      { name: "Completed Jobs", link: "/" },
-      { name: "Unfulfilled Jobs", link: "/" },
-      { name: "Pending Jobs", link: "/" },
-      { name: "Bids", link: "/" },
+      { name: "Posted Jobs", link: "/posted-jobs" },
+      { name: "Accepted Jobs", link: "/accepted-jobs" },
+      { name: "Completed Jobs", link: "/completed-jobs" },
+      { name: "Unfulfilled Jobs", link: "/unfulfilled-jobs" },
+      { name: "Pending Jobs", link: "/pending-jobs" },
+      { name: "Bids", link: "/bids" },
     ],
   },
   {
     name: "Manage Fields",
     icon: <TextFieldsIcon />,
     menu: [
-      { name: "Nurse App Fields", link: "/" },
-      { name: "Manager App Fields", link: "/" },
+      { name: "Nurse App Fields", link: "/nurse-app-fields" },
+      { name: "Manager App Fields", link: "/manager-app-fields" },
     ],
   },
   {
@@ -61,16 +61,16 @@ export const sidebarAPI = [
   {
     name: "Notification",
     icon: <NotificationsActiveIcon />,
-    link: "/",
+    link: "/notification",
   },
   {
     name: "Reviews",
     icon: <ReviewsIcon />,
-    link: "/",
+    link: "/reviews",
   },
   {
     name: "Logout",
     icon: <ExitToAppIcon />,
-    link: "/",
+    link: "/logout",
   },
 ];
