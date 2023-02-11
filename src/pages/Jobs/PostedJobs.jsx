@@ -24,7 +24,7 @@ const PostedJobs = () => {
   }, []);
 
   const columns = [
-    { field: "jobID", headerName: "Job ID", width: 50 },
+    { field: "jobID", headerName: "Job ID", width: 100 },
     { field: "shiftTitle", headerName: "Shift Title", width: 200 },
     {
       field: "expirationDate",

@@ -21,7 +21,7 @@ const AdminSidebar = () => {
   return (
     <Box
       minWidth={sidebarData ? "300px" : "80px"}
-      bgcolor={colors.secondary[500]}
+      bgcolor={colors.secondary[600]}
       height="100%"
     >
       <Divider color="#fff" sx={{ height: "1px" }} />
