@@ -69,7 +69,7 @@ const Nurse = () => {
 
   return (
     <Box sx={{ height: "90%", width: "100%" }}>
-      <Heading title="Agency Manager Details" />
+      <Heading title="Nurse Details" />
       <DataGrid
         sx={{ height: "100%" }}
         rows={pageData}

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, ButtonGroup, IconButton } from "@mui/material";
+import { Avatar, Box, Button, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CreateIcon from "@mui/icons-material/Create";
 import Heading from "../../components/Heading";
+import { Link } from "react-router-dom";
 
 const AgencyAdmin = () => {
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
     await fetch(
-      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?role=admin`,
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?skip=1&limit=100&role=admin`,
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
@@ -83,14 +84,28 @@ const AgencyAdmin = () => {
 
   return (
     <Box sx={{ height: "90%", width: "100%" }}>
-      <Heading title="Agency Admin Details" />
+      <Box
+        width="100%"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Heading title="Agency Admin Details" />
+        <Link to="/add-agency-admin">
+          <Button variant="outlined" sx={{ fontWeight: "700" }}>
+            Add New Agency
+          </Button>
+        </Link>
+      </Box>
       <DataGrid
         sx={{ height: "100%" }}
         rows={pageData}
         columns={columns}
         getRowId={(row) => row._id}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        autoPageSize
+        pagination
         checkboxSelection
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}

@@ -47,7 +47,7 @@ const AdminNavbar = () => {
         justifyContent="space-between"
       >
         <Box></Box>
-        <Box>
+        {/* <Box>
           <IconButton
             TouchRippleProps={{
               style: {
@@ -68,7 +68,7 @@ const AdminNavbar = () => {
               <LightModeOutlined />
             )}
           </IconButton>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, ButtonGroup, IconButton } from "@mui/material";
+import { Avatar, Box, Button, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CreateIcon from "@mui/icons-material/Create";
 import Heading from "../../components/Heading";
+import { Link } from "react-router-dom";
 
 const AgencyManager = () => {
   const [pageData, setPageData] = useState([]);
@@ -81,10 +82,23 @@ const AgencyManager = () => {
 
   const [loading, setLoading] = useState(true);
 
-
   return (
     <Box sx={{ height: "90%", width: "100%" }}>
-      <Heading title="Agency Manager Details" />
+      <Box
+        width="100%"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Heading title="Agency Manager Details" />
+        <Link to="/add-agency-manager">
+          <Button variant="outlined" sx={{ fontWeight: "700" }}>
+            Add New Manager
+          </Button>
+        </Link>
+      </Box>
       <DataGrid
         sx={{ height: "100%" }}
         rows={pageData}

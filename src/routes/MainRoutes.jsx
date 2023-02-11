@@ -6,6 +6,8 @@ import AcceptedJobs from "../pages/Jobs/AcceptedJobs";
 import CompletedJobs from "../pages/Jobs/CompletedJobs";
 import PostedJobs from "../pages/Jobs/PostedJobs";
 import UnfulfilledJobs from "../pages/Jobs/UnfulfilledJobs";
+import AddAgencyAdmin from "../pages/Users/AddAgencyAdmin";
+import AddAgencyManager from "../pages/Users/AddAgencyManager";
 import AgencyAdmin from "../pages/Users/AgencyAdmin";
 import AgencyManager from "../pages/Users/AgencyManager";
 import Nurse from "../pages/Users/Nurse";
@@ -16,6 +18,9 @@ const MainRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/all-agency-admin" element={<AgencyAdmin />} />
+      <Route path="/add-agency-admin" element={<AddAgencyAdmin />} />
+      <Route path="/add-agency-manager" element={<AddAgencyManager />} />
+
       <Route path="/all-agency-manager" element={<AgencyManager />} />
       <Route path="/all-nurse" element={<Nurse />} />
       <Route path="/nurse-details/:str" element={<NurseDetails />} />

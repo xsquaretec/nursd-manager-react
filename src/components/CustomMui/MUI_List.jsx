@@ -1,6 +1,4 @@
 "use client";
-import { tokens } from "../../theme/theme";
-import { useTheme } from "@emotion/react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
   Collapse,
@@ -15,8 +13,6 @@ import { Link, useLocation } from "react-router-dom";
 const MUIList = ({ item: pageData, style }) => {
   const location = useLocation();
 
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
 
   const [open, setOpen] = useState(false);
 
@@ -45,12 +41,12 @@ const MUIList = ({ item: pageData, style }) => {
           padding: 1.5,
           pl: 1.5,
           borderRadius: 2,
-          color: colors.primary[500],
+          color: active ? "#3D3D3D" : "#fff",
           backgroundColor: active && "#fff",
 
           "&:hover": {
             backgroundColor: "#ffffff",
-            color: colors.primary[500],
+            color:  "#3D3D3D",
           },
         }}
       >
@@ -79,12 +75,12 @@ const MUIList = ({ item: pageData, style }) => {
                     pl: 5,
                     borderRadius: 2,
                     backgroundColor: location.pathname === item.link && "white",
-                    color: colors.primary[500],
+                    color: location.pathname !== item.link ? "white" : "#3D3D3D",
                     my: 0.5,
 
                     "&:hover": {
                       backgroundColor: "#ffffff",
-                      color: colors.primary[500],
+                      color: "#3D3D3D",
                     },
                   }}
                 >

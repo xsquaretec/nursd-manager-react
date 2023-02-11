@@ -21,7 +21,7 @@ const AdminSidebar = () => {
   return (
     <Box
       minWidth={sidebarData ? "300px" : "80px"}
-      bgcolor={colors.secondary[700]}
+      bgcolor={colors.secondary[500]}
       height="100%"
     >
       <Divider color="#fff" sx={{ height: "1px" }} />
@@ -40,11 +40,11 @@ const AdminSidebar = () => {
                         borderRadius: 2,
                         backgroundColor:
                           location.pathname === item.link && "white",
-                        color: colors.primary[500],
+                        color: location.pathname === item.link ? "#3D3D3D" : "#fff",
 
                         "&:hover": {
                           backgroundColor: "#ffffff",
-                          color: colors.primary[500],
+                          color: colors.secondary[500],
                         },
                       }}
                     >
