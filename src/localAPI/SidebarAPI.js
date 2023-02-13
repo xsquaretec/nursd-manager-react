@@ -37,6 +37,7 @@ export const sidebarAPI = [
       { name: "Completed Jobs", link: "/completed-jobs" },
       { name: "Unfulfilled Jobs", link: "/unfulfilled-jobs" },
       { name: "Pending Jobs", link: "/pending-jobs" },
+      { name: "Add New Jobs", link: "/add-new-jobs" },
       { name: "Bids", link: "/bids" },
     ],
   },

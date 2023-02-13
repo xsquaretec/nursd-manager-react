@@ -19,6 +19,8 @@ import AdminSidebar from "../components/AdminSidebar";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Logout from "../pages/Auth/Logout";
+import AddNewJobs from "../pages/Jobs/AddNewJobs";
+import Profile from "../pages/Account/Profile";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -73,6 +75,7 @@ const MainRoutes = () => {
                   />
 
                   {/* Jobs */}
+                  <Route path="/add-new-jobs" element={<AddNewJobs />} />
                   <Route path="/posted-jobs" element={<PostedJobs />} />
                   <Route path="/accepted-jobs" element={<AcceptedJobs />} />
                   <Route path="/completed-jobs" element={<CompletedJobs />} />
@@ -80,6 +83,10 @@ const MainRoutes = () => {
                     path="/unfulfilled-jobs"
                     element={<UnfulfilledJobs />}
                   />
+
+
+                  {/* Profile Routes */}
+                  <Route path="/profile" element={<Profile />} />
                 </Routes>
               </PerfectScrollbar>
             </Box>
