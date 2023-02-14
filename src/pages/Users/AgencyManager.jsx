@@ -4,7 +4,11 @@ import {
   Box,
   Button,
   ButtonGroup,
+  FormControl,
   IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
   useTheme,
 } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
@@ -13,8 +17,24 @@ import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme/theme";
 import { useAuth } from "../../context/auth";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const AgencyManager = () => {
+  const handleChangeStatus = async (e, id) => {
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/changeMangerAndAdminStatus/${id}/${e}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .then(() => getData());
+  };
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [pageData, setPageData] = useState([]);
@@ -72,6 +92,66 @@ const AgencyManager = () => {
       width: 170,
       valueGetter: ({ row }) =>
         row.organizationDetails.organizationDirectorName,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      sortable: false,
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <>
+            <FormControl
+              variant="standard"
+              sx={{ m: 1, minWidth: 120, width: "100%", border: "none" }}
+            >
+              <InputLabel id="demo-simple-select-standard-label">
+                Status
+              </InputLabel>
+              <Select
+                disableUnderline
+                fullWidth
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                label="Status"
+                value={params.row.userStatus}
+                onChange={(e) =>
+                  handleChangeStatus(e.target.value, params.row._id)
+                }
+              >
+                <MenuItem value="availableNow">
+                  <CircleIcon
+                    fontSize=""
+                    className="text-[11px] text-green-600 mr-2"
+                  />
+                  Available
+                </MenuItem>
+                <MenuItem value="inactive">
+                  <CircleIcon
+                    fontSize=""
+                    className="text-[11px] text-orange-300 mr-2"
+                  />
+                  Inactive
+                </MenuItem>
+                <MenuItem value="suspend">
+                  <CircleIcon
+                    fontSize=""
+                    className="text-[11px] text-red-600 mr-2"
+                  />
+                  Suspend
+                </MenuItem>
+                <MenuItem value="delete">
+                  <CircleIcon
+                    fontSize=""
+                    className="text-[11px] text-black mr-2"
+                  />
+                  Delete
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </>
+        );
+      },
     },
     {
       field: "action",

@@ -6,10 +6,28 @@ import { useAuth } from "../../../context/auth";
 import CircleIcon from "@mui/icons-material/Circle";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import NoRows from "../../../components/NoRows";
-import { Avatar, Box, ButtonGroup, IconButton } from "@mui/material";
+import { Avatar, Box, ButtonGroup, FormControl, IconButton, MenuItem, Select } from "@mui/material";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
 const AgencyAdminProfile = () => {
+
+
+  const handleChangeStatus = async (e, id) => {
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/changeMangerAndAdminStatus/${id}/${e}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .then(() => getData());
+  };
+
+  
   function getFullName(params) {
     return `${params.row.firstName || ""} ${params.row.lastName || ""}`;
   }
@@ -122,15 +140,51 @@ const AgencyAdminProfile = () => {
             </div>
             <div className="grid grid-cols-3 gap-2 items-center">
               <p className="text-sm  font-bold">Status :</p>
-              {pageData?.isAvailable === "availableNow" && (
-                <span className="col-span-2">
-                  <CircleIcon
-                    fontSize=""
-                    className="text-[11px] text-green-600 mr-2"
-                  />
-                  Available
-                </span>
-              )}
+              <FormControl
+                variant="standard"
+                sx={{ m: 1, minWidth: 120, width: "100%", border: "none" }}
+              >
+                <Select
+                  disableUnderline
+                  fullWidth
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  label="Status"
+                  value={pageData.userStatus}
+                  onChange={(e) =>
+                    handleChangeStatus(e.target.value, pageData._id)
+                  }
+                >
+                  <MenuItem value="availableNow">
+                    <CircleIcon
+                      fontSize=""
+                      className="text-[11px] text-green-600 mr-2"
+                    />
+                    Available
+                  </MenuItem>
+                  <MenuItem value="inactive">
+                    <CircleIcon
+                      fontSize=""
+                      className="text-[11px] text-orange-300 mr-2"
+                    />
+                    Inactive
+                  </MenuItem>
+                  <MenuItem value="suspend">
+                    <CircleIcon
+                      fontSize=""
+                      className="text-[11px] text-red-600 mr-2"
+                    />
+                    Suspend
+                  </MenuItem>
+                  <MenuItem value="delete">
+                    <CircleIcon
+                      fontSize=""
+                      className="text-[11px] text-black mr-2"
+                    />
+                    Delete
+                  </MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div className="grid grid-cols-3 gap-2 items-center">
               <p className="text-sm font-bold">Address :</p>
