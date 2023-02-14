@@ -10,6 +10,7 @@ const NurseDetails = () => {
   const [pageData, setPageData] = useState([]);
   const [data, setData] = useState([]);
 
+  console.log(pageData)
   const getData = async () => {
     await fetch(
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/user/${pathname.str}`,
@@ -21,6 +22,7 @@ const NurseDetails = () => {
     )
       .then((res) => res.json())
       .then((res) => {
+        console.log(res)
         setPageData(res.data);
       });
   };
@@ -29,6 +31,7 @@ const NurseDetails = () => {
     getData();
   }, [pathname]);
 
+  console.log(pageData, 'pagedata')
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 

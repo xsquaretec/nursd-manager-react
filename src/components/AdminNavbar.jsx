@@ -120,7 +120,7 @@ const AdminNavbar = () => {
                     },
                   }}
                 >
-                  <Link href="/profile">
+                  <Link href="/profile" style={{textDecoration: "none"}}>
                   View Profile
                   </Link>
                 </Typography>

@@ -79,12 +79,12 @@ const Home = () => {
 
       <Grid container spacing={5} mb={5}>
         <Grid item xs={4}>
-          <Link href="/all-agency-admin">
+          <Link href="/all-agency-admin" style={{textDecoration: "none"}}>
           <DashboardCard title="Total Agencies" count={pageData?.totlaAgencyAdmin} icon={Agencies} />
           </Link>
         </Grid>
         <Grid item xs={4}>
-          <Link href="/all-nurse">
+          <Link href="/all-nurse" style={{textDecoration: "none"}}>
           <DashboardCard title="Total Nurses" count={pageData?.totalNurse} icon={Nurse} />
           </Link>
         </Grid>

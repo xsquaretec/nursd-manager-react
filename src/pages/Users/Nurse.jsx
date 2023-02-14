@@ -8,17 +8,22 @@ import { Link } from "react-router-dom";
 
 const Nurse = () => {
   const [pageData, setPageData] = useState([]);
+  console.log(pageData)
+
+  
 
   const getData = async () => {
     await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/user`, {
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTBmMzhhOWU5ZjA4OWNlOTRkZDkxYyIsImVtYWlsIjoibWFuYWdlckBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjYzNTIzMjg1NDciLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY3NjM1NDgwMywiZXhwIjoxNjc4OTQ2ODAzfQ.awbk2QT1VKgm7i0aQIMSWITE-48BAfzf9nd_z9mSMb8`,
       },
     })
       .then((res) => res.json())
       .then((res) => setPageData(res.data))
       .then(() => setLoading(false));
   };
+
+  console.log(getData())
 
   useEffect(() => {
     getData();
