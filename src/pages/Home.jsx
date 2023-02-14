@@ -6,12 +6,12 @@ import DashBG from "../assets/dashboard_bg.png";
 import Nurse from "../assets/Nurse.svg";
 import Agencies from "../assets/Agencies.svg";
 import Notification from "../components/Dashboard/Notification";
-
+import { useAuth } from "../context/auth";
 
 export const DashboardCard = ({ title, icon, count }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  
+
   return (
     <Box
       p={2}
@@ -23,7 +23,7 @@ export const DashboardCard = ({ title, icon, count }) => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         borderLeft: "5px solid #13B493",
-        backgroundColor: "#F2FAF8"
+        backgroundColor: "#F2FAF8",
       }}
       display="flex"
       justifyContent="space-between"
@@ -48,10 +48,14 @@ const Home = () => {
 
   const [pageData, setPageData] = useState([]);
 
+  const auth = useAuth();
+
   const getData = async () => {
+    const token = auth.user;
+
     await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminDashboard`, {
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -62,6 +66,8 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  console.log(pageData);
 
   const [loading, setLoading] = useState(true);
 
@@ -80,13 +86,21 @@ const Home = () => {
 
       <Grid container spacing={5} mb={5}>
         <Grid item xs={4}>
-          <Link href="/all-agency-admin" style={{textDecoration: "none"}}>
-          <DashboardCard title="Total Agencies" count={pageData?.totlaAgencyAdmin} icon={Agencies} />
+          <Link href={"all-agency-admin"} style={{ textDecoration: "none" }}>
+            <DashboardCard
+              title="Total Agencies"
+              count={pageData?.totlaAgencyAdmin}
+              icon={Agencies}
+            />
           </Link>
         </Grid>
         <Grid item xs={4}>
-          <Link href="/all-nurse" style={{textDecoration: "none"}}>
-          <DashboardCard title="Total Nurses" count={pageData?.totalNurse} icon={Nurse} />
+          <Link href={"all-nurse"} style={{ textDecoration: "none" }}>
+            <DashboardCard
+              title="Total Nurses"
+              count={pageData?.totalNurse}
+              icon={Nurse}
+            />
           </Link>
         </Grid>
         <Grid item xs={4}>
@@ -142,7 +156,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Notification/>
+      <Notification />
     </Box>
   );
 };

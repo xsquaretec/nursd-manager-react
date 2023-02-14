@@ -29,25 +29,6 @@ const CompletedJobs = () => {
   const columns = [
     { field: "jobID", headerName: "Job ID", width: 50 },
     { field: "shiftTitle", headerName: "Shift Title", width: 200 },
-    // {
-    //   field: "expirationDate",
-    //   headerName: "Expiration",
-    //   width: 200,
-    //   renderCell: (params) => {
-    //     return (
-    //       <p>
-    //         {moment(params.value).isBefore() ? (
-    //           <span className="text-red-500 font-bold">
-    //             Expired {moment(params.value).fromNow()}
-    //           </span>
-    //         ) : (
-    //           moment(params.value).fromNow()
-    //         )}
-    //       </p>
-    //     );
-    //   },
-    // },
-
     {
       field: "startDate",
       headerName: "Shift Date",
@@ -104,43 +85,6 @@ const CompletedJobs = () => {
         ", " +
         row.address.country,
     },
-    // {
-    //   field: "specialty",
-    //   headerName: "specialty",
-    //   width: 200,
-    //   renderCell: (params) => {
-    //     return (
-    //       <div className="flex gap-1">
-    //         {params.value.map((item, index) => (
-    //           <p
-    //             className="bg-[#0db391] text-white font-bold p-1 rounded-md text-xs"
-    //             key={index}
-    //           >
-    //             {item}
-    //           </p>
-    //         ))}
-    //       </div>
-    //     );
-    //   },
-    // },
-
-    // {
-    //   field: "break",
-    //   headerName: "Break",
-    //   width: 70,
-    //   renderCell: (params) => {
-    //     return params.value + " mins";
-    //   },
-    // },
-
-    // {
-    //   field: "baseRate",
-    //   headerName: "Current Rate",
-    //   width: 100,
-    //   renderCell: (params) => {
-    //     return <p className="text-[#278d44] font-bold">$ {params.value}/hr</p>;
-    //   },
-    // },
   ];
 
   const [loading, setLoading] = useState(true);
@@ -161,9 +105,7 @@ const CompletedJobs = () => {
           rows={pageData}
           columns={columns}
           getRowId={(row) => row._id}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
+          autoPageSize
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
           components={{

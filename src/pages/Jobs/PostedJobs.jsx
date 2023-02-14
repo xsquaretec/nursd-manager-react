@@ -26,6 +26,8 @@ const PostedJobs = () => {
     getData();
   }, []);
 
+  console.log(pageData)
+
   const columns = [
     { field: "jobID", headerName: "Job ID", width: 100 },
     { field: "shiftTitle", headerName: "Shift Title", width: 200 },
@@ -161,9 +163,7 @@ const PostedJobs = () => {
           rows={pageData}
           columns={columns}
           getRowId={(row) => row._id}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
+          autoPageSize
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
           components={{

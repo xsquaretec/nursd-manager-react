@@ -1,31 +1,24 @@
-import { Box, Button, IconButton, Link, Typography, useTheme } from "@mui/material";
-import React, { useContext } from "react";
+import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
+import React from "react";
 import Logo from "../assets/logo.svg";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ColorModeContext, tokens } from "../theme/theme";
+import { tokens } from "../theme/theme";
 // eslint-disable-next-line
 import MUI_Icon from "./CustomMui/MUI_Icon";
 import { useDispatch } from "react-redux";
 import { changeSidebar } from "../redux/sidebarSlice";
 import {
   AccountCircle,
-  DarkModeOutlined,
   ExitToAppOutlined,
-  LightModeOutlined,
   Person2Outlined,
   SettingsOutlined,
 } from "@mui/icons-material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Popover from "@mui/material/Popover";
-import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import { teal } from "@mui/material/colors";
 
 const AdminNavbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const colorMode = useContext(ColorModeContext);
 
   const dispatch = useDispatch();
 
@@ -58,6 +51,9 @@ const AdminNavbar = () => {
         alignItems="center"
       >
         <img src={Logo} alt="" />
+        {/* 
+        // eslint-disable-next-line
+         */}
         <MUI_Icon
           icon={<MenuIcon />}
           color={"white"}
@@ -120,12 +116,12 @@ const AdminNavbar = () => {
                     },
                   }}
                 >
-                  <Link href="/profile" style={{textDecoration: "none"}}>
-                  View Profile
+                  <Link href="/profile" style={{ textDecoration: "none" }}>
+                    View Profile
                   </Link>
                 </Typography>
               </Box>
-              
+
               <Box className="flex items-center  p-2 px-4">
                 <SettingsOutlined
                   sx={{

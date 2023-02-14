@@ -22,6 +22,7 @@ import Logout from "../pages/Auth/Logout";
 import CSVUpload from "../pages/CSVUpload";
 import AddNewJobs from "../pages/Jobs/AddNewJobs";
 import Profile from "../pages/Account/Profile";
+import Manager from "../pages/Users/SingleProfile/Manager";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -49,7 +50,7 @@ const MainRoutes = () => {
               <PerfectScrollbar>
                 <Routes>
                   <Route path="/logout" element={<Logout />} />
-                  <Route path="/csv-upload/:str" element={<CSVUpload  />} />
+                  <Route path="/csv-upload/:str" element={<CSVUpload />} />
 
                   <Route path="/" element={<Home />} />
                   <Route path="/all-agency-admin" element={<AgencyAdmin />} />
@@ -66,6 +67,12 @@ const MainRoutes = () => {
                     path="/all-agency-manager"
                     element={<AgencyManager />}
                   />
+
+                  <Route
+                    path="/manager-profile/:str"
+                    element={<Manager />}
+                  />
+
                   <Route path="/all-nurse" element={<Nurse />} />
                   <Route
                     path="/nurse-details/:str"
@@ -85,7 +92,6 @@ const MainRoutes = () => {
                     path="/unfulfilled-jobs"
                     element={<UnfulfilledJobs />}
                   />
-
 
                   {/* Profile Routes */}
                   <Route path="/profile" element={<Profile />} />

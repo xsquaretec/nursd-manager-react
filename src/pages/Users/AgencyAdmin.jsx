@@ -86,9 +86,9 @@ const AgencyAdmin = () => {
               <RemoveRedEyeOutlinedIcon />
             </IconButton>
 
-            <IconButton color={colors.text[500]}>
+            {/* <IconButton color={colors.text[500]}>
               <CreateIcon />
-            </IconButton>
+            </IconButton> */}
           </ButtonGroup>
         );
       },
@@ -128,7 +128,6 @@ const AgencyAdmin = () => {
         getRowId={(row) => row._id}
         autoPageSize
         pagination
-        checkboxSelection
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
         components={{

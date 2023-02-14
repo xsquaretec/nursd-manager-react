@@ -1,10 +1,7 @@
-import { Box, Button, useTheme } from "@mui/material";
-import React, { useState } from "react";
+import {  Button, useTheme } from "@mui/material";
+import React from "react";
 import Heading from "../../components/Heading";
 import { tokens } from "../../theme/theme";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
 import { useForm } from "react-hook-form";
 
 const AddAgencyAdmin = () => {
@@ -14,10 +11,8 @@ const AddAgencyAdmin = () => {
   const {
     register,
     handleSubmit,
-    watch,
     getValues,
     reset,
-    trigger,
     formState: { errors },
   } = useForm();
 

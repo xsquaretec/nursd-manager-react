@@ -1,5 +1,12 @@
-import { alpha, Box, Button, FormControl, InputLabel, MenuItem, Select, styled, Switch, Typography, useTheme } from "@mui/material";
-import { teal } from "@mui/material/colors";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -10,7 +17,6 @@ import { tokens } from "../../theme/theme";
 const NurseDetails = () => {
   const pathname = useParams();
   const [pageData, setPageData] = useState([]);
-  const [data, setData] = useState([]);
 
   const auth = useAuth();
 
@@ -40,38 +46,21 @@ const NurseDetails = () => {
   const colors = tokens(theme.palette.mode);
   const [loading, setLoading] = useState(true);
 
-
-  const PinkSwitch = styled(Switch)(({ theme }) => ({
-    "& .MuiSwitch-switchBase.Mui-checked": {
-      color: teal[500],
-      "&:hover": {
-        backgroundColor: alpha(teal[500], theme.palette.action.hoverOpacity),
-      },
-    },
-    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
-      backgroundColor: teal[500],
-    },
-  }));
-  const label = {
-    inputProps: {
-      "aria-label": "Color switch demo",
-      "aria-label": "Checkbox demo",
-    },
-  };
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);}
+    setAge(event.target.value);
+  };
 
   return loading ? (
     ""
   ) : (
-    <div>
+    <div className="h-screen mb-10">
       <Heading
         title={`${pageData.firstName + " " + pageData.lastName} Details`}
       />
 
-      <div className="grid grid-cols-2 w-[80%]">
+      <div className="grid grid-cols-2 2xl:w-[80%]">
         <div className="flex items-center">
           <img
             src={process.env.REACT_APP_PUBLIC_IAMGE_URL + pageData.profileImage}
@@ -87,29 +76,30 @@ const NurseDetails = () => {
               YR
             </p>
             <div className="grid grid-flow-col gap-2 items-center">
-            <p className="text-lg">Email ID :</p>
-            <p classname="">{pageData.email}</p>
-          </div>
-          <Box sx={{ minWidth: 140 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Status</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value="">
-          <em>none</em>
-          </MenuItem>
-          <MenuItem value={10}>Active</MenuItem>
-          <MenuItem value={20}>Deactive</MenuItem>
-          <MenuItem value={30}>Suspend</MenuItem>
-          <MenuItem value={30}>Block</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+              <p className="text-lg">Email ID :</p>
+              <p classname="">{pageData.email}</p>
+            </div>
+            <Box sx={{ minWidth: 140 }}>
+              <FormControl fullWidth>
+                <InputLabel size="small" id="demo-simple-select-label">Status</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={age}
+                  label="Age"
+                  onChange={handleChange}
+                  size="small"
+                >
+                  <MenuItem value="">
+                    <em>none</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Active</MenuItem>
+                  <MenuItem value={20}>Deactive</MenuItem>
+                  <MenuItem value={30}>Suspend</MenuItem>
+                  <MenuItem value={30}>Block</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </div>
         </div>
         <div className="border-l pl-10">
@@ -132,7 +122,7 @@ const NurseDetails = () => {
             <p className="text-lg">Mobile No.</p>
             <p className="">{pageData.phoneNumber}</p>
           </div>
-          
+
           {/* <div className="grid grid-cols-2">
             <p className="text-lg">Height</p>
             <p className="">150 cm</p>
@@ -182,7 +172,7 @@ const NurseDetails = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 w-[80%] mt-10">
+      <div className="grid grid-cols-2 2xl:w-[80%] mt-10">
         <div className="">
           <Typography
             variant="h5"
@@ -307,134 +297,6 @@ const NurseDetails = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="grid grid-cols-2 w-[80%] mt-10">
-        <div className="border-l pl-10">
-          <Typography
-            variant="h5"
-            sx={{
-              mb: 2,
-              mt: 1,
-              color: colors.secondary[700],
-              fontWeight: 600,
-            }}
-          >
-            Personal Information
-          </Typography>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Date of Birth</p>
-            <p className="">20/4/1993</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Mobile No.</p>
-            <p className="">1234567890</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Email ID</p>
-            <p :classname="">demo@gmail.com</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Height</p>
-            <p className="">150 cm</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Weight</p>
-            <p className="">70 kg</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Address</p>
-            <p className="">Bandra House Bombay</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Nationality</p>
-            <p className="">Indian</p>
-          </div>
-        </div>
-      </div>
-      <div className="grid grid-cols-2 w-[80%] mt-10">
-        <div className="">
-          <Typography
-            variant="h5"
-            sx={{
-              mb: 2,
-              mt: 1,
-              color: colors.secondary[700],
-              fontWeight: 600,
-            }}
-          >
-            Personal Information
-          </Typography>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Date of Birth</p>
-            <p className="">20/4/1993</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Mobile No.</p>
-            <p className="">1234567890</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Email ID</p>
-            <p :classname="">demo@gmail.com</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Height</p>
-            <p className="">150 cm</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Weight</p>
-            <p className="">70 kg</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Address</p>
-            <p className="">Bandra House Bombay</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Nationality</p>
-            <p className="">Indian</p>
-          </div>
-        </div>
-        <div className="border-l pl-10">
-          <Typography
-            variant="h5"
-            sx={{
-              mb: 2,
-              mt: 1,
-              color: colors.secondary[700],
-              fontWeight: 600,
-            }}
-          >
-            Personal Information
-          </Typography>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Date of Birth</p>
-            <p className="">20/4/1993</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Mobile No.</p>
-            <p className="">1234567890</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Email ID</p>
-            <p :classname="">demo@gmail.com</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Height</p>
-            <p className="">150 cm</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Weight</p>
-            <p className="">70 kg</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Address</p>
-            <p className="">Bandra House Bombay</p>
-          </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Nationality</p>
-            <p className="">Indian</p>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

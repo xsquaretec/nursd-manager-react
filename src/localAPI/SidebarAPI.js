@@ -14,11 +14,6 @@ export const sidebarAPI = [
     icon: <DashboardIcon />,
     link: "/",
   },
-  // {
-  //   name: "Add New Agency",
-  //   icon: <AddBusinessIcon />,
-  //   link: "/superAdmin/addNewAgency",
-  // },
   {
     name: "User Manage",
     icon: <PeopleAltIcon />,
@@ -32,12 +27,12 @@ export const sidebarAPI = [
     name: "Jobs",
     icon: <WorkIcon />,
     menu: [
+      { name: "Add New Jobs", link: "/add-new-jobs" },
       { name: "Posted Jobs", link: "/posted-jobs" },
       { name: "Accepted Jobs", link: "/accepted-jobs" },
       { name: "Completed Jobs", link: "/completed-jobs" },
       { name: "Unfulfilled Jobs", link: "/unfulfilled-jobs" },
       { name: "Pending Jobs", link: "/pending-jobs" },
-      { name: "Add New Jobs", link: "/add-new-jobs" },
       { name: "Bids", link: "/bids" },
     ],
   },

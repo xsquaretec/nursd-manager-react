@@ -22,7 +22,6 @@ const AgencyManager = () => {
 
   const auth = useAuth();
 
-
   const getData = async () => {
     await fetch(
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?role=manager`,
@@ -82,12 +81,14 @@ const AgencyManager = () => {
       renderCell: (params) => {
         return (
           <ButtonGroup size="small" aria-label="small button group">
-            <IconButton color="primary">
-              <RemoveRedEyeOutlinedIcon />
-            </IconButton>
-            <IconButton color={colors.text[500]}>
+            <Link to={`/manager-profile/${params.row._id}`}>
+              <IconButton color="primary">
+                <RemoveRedEyeOutlinedIcon />
+              </IconButton>
+            </Link>
+            {/* <IconButton color={colors.text[500]}>
               <CreateIcon />
-            </IconButton>
+            </IconButton> */}
           </ButtonGroup>
         );
       },
@@ -96,7 +97,9 @@ const AgencyManager = () => {
 
   const [loading, setLoading] = useState(true);
 
-  return loading ? "" : (
+  return loading ? (
+    ""
+  ) : (
     <Box sx={{ height: "90%", width: "100%" }}>
       <Box
         width="100%"
@@ -125,9 +128,7 @@ const AgencyManager = () => {
         rows={pageData}
         columns={columns}
         getRowId={(row) => row._id}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
+        autoPageSize
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
         components={{

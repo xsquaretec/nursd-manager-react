@@ -164,9 +164,7 @@ const AcceptedJobs = () => {
           rows={pageData}
           columns={columns}
           getRowId={(row) => row._id}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
+          autoPageSize
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
           components={{

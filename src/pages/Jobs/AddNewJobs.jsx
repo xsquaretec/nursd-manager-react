@@ -6,21 +6,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Heading from "../../components/Heading";
 import { Button, Checkbox, Link, TextField, Typography } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers-pro";
-import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
-import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
-import { LicenseInfo } from "@mui/x-license-pro";
 import { alpha, styled } from "@mui/material/styles";
-import { pink, teal } from "@mui/material/colors";
+import { teal } from "@mui/material/colors";
 import Switch from "@mui/material/Switch";
 import { useAuth } from "../../context/auth";
 import axios from "axios";
 import moment from "moment";
-// LicenseInfo.setLicenseKey('YOUR_LICENSE_KEY');
-
-// function getWeeksAfter(date, amount) {
-//     return date ? date.add(amount, 'week') : undefined;
-//   }
 
 const AddNewJobs = () => {
   const [pageData, setPageData] = useState([]);
@@ -43,8 +34,7 @@ const AddNewJobs = () => {
     getData();
   }, []);
 
-
-  const [bid, setBid] = useState(false)
+  const [bid, setBid] = useState(false);
 
   const PinkSwitch = styled(Switch)(({ theme }) => ({
     "& .MuiSwitch-switchBase.Mui-checked": {
@@ -90,7 +80,7 @@ const AddNewJobs = () => {
     floor: "",
     baseRate: "",
     notes: "",
-    maxBidValue: 0,
+    maxBidValue: "",
   });
 
   const getStartTime = (date, time) => {
@@ -161,7 +151,8 @@ const AddNewJobs = () => {
       .then(() => setLoading(false))
       .catch(function (error) {
         alert("Something Went Wrong...");
-      }).then(() => setFormValue(""))
+      })
+      .then(() => setFormValue(""));
   };
 
   return loading ? (
@@ -343,31 +334,6 @@ const AddNewJobs = () => {
               ))}
             </Select>
           </FormControl>
-          <FormControl>
-            <InputLabel id="demo-simple-select-required-label">
-              Break
-            </InputLabel>
-            <Select
-              value={formValue.break}
-              onChange={(item) => {
-                setFormValue({ ...formValue, break: item.target.value });
-              }}
-              width="100%"
-              label="Break *"
-              required={true}
-              labelId="demo-simple-select-required-label"
-              id="demo-simple-select-required"
-            >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
-              {pageData.breaks.map((item, index) => (
-                <MenuItem key={index} value={item.value}>
-                  {item.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
 
           <TextField
             type="date"
@@ -410,6 +376,31 @@ const AddNewJobs = () => {
               setFormValue({ ...formValue, endTime: e.target.value })
             }
           />
+          <FormControl>
+            <InputLabel id="demo-simple-select-required-label">
+              Break
+            </InputLabel>
+            <Select
+              value={formValue.break}
+              onChange={(item) => {
+                setFormValue({ ...formValue, break: item.target.value });
+              }}
+              width="100%"
+              label="Break *"
+              required={true}
+              labelId="demo-simple-select-required-label"
+              id="demo-simple-select-required"
+            >
+              <MenuItem value="">
+                <em>none</em>
+              </MenuItem>
+              {pageData.breaks.map((item, index) => (
+                <MenuItem key={index} value={item.value}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <FormControl>
             <InputLabel id="demo-simple-select-required-label">
               Customer *
@@ -507,11 +498,6 @@ const AddNewJobs = () => {
             label="Base Rate"
             placeholder="Rate $"
           />
-          <Box className="flex  items-center ">
-            <Typography>Disable Bid ?</Typography>
-            <PinkSwitch {...label} value={bid} onChange={(e) => setBid(e.target.checked)}  label="Bid" />
-            <Typography>Enable Bid ?</Typography>
-          </Box>
           <TextField
             required
             id="outlined-required"
@@ -522,6 +508,18 @@ const AddNewJobs = () => {
               setFormValue({ ...formValue, notes: item.target.value });
             }}
           />
+          <Box className="flex  items-center ">
+            <Typography>Disable Bid ?</Typography>
+            <PinkSwitch
+              {...label}
+              defaultChecked={bid}
+              value={bid}
+              onChange={(e) => setBid(e.target.checked)}
+              label="Bid"
+            />
+            <Typography>Enable Bid ?</Typography>
+          </Box>
+
           <Box className="flex items-center gap-5">
             <Box className="flex items-center">
               <Checkbox
@@ -563,6 +561,20 @@ const AddNewJobs = () => {
               <Typography>Publish</Typography>
             </Box>
           </Box>
+
+          {bid && (
+            <TextField
+              type="number"
+              required
+              id="outlined-required"
+              label="Bid Value"
+              placeholder="Bid Value"
+              value={formValue.maxBidValue}
+              onChange={(item) => {
+                setFormValue({ ...formValue, maxBidValue: item.target.value });
+              }}
+            />
+          )}
         </Box>
 
         <Button
