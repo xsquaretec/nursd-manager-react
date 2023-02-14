@@ -23,6 +23,7 @@ import CSVUpload from "../pages/CSVUpload";
 import AddNewJobs from "../pages/Jobs/AddNewJobs";
 import Profile from "../pages/Account/Profile";
 import Manager from "../pages/Users/SingleProfile/Manager";
+import AgencyAdminProfile from "../pages/Users/SingleProfile/AgencyAdminProfile";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -68,9 +69,11 @@ const MainRoutes = () => {
                     element={<AgencyManager />}
                   />
 
+                  <Route path="/manager-profile/:str" element={<Manager />} />
+
                   <Route
-                    path="/manager-profile/:str"
-                    element={<Manager />}
+                    path="/agency-admin-profile/:str"
+                    element={<AgencyAdminProfile />}
                   />
 
                   <Route path="/all-nurse" element={<Nurse />} />

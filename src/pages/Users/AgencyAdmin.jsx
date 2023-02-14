@@ -82,10 +82,11 @@ const AgencyAdmin = () => {
       renderCell: (params) => {
         return (
           <ButtonGroup size="small" aria-label="small button group">
-            <IconButton color="primary">
-              <RemoveRedEyeOutlinedIcon />
-            </IconButton>
-
+            <Link to={`/agency-admin-profile/${params.row._id}`}>
+              <IconButton color="primary">
+                <RemoveRedEyeOutlinedIcon />
+              </IconButton>
+            </Link>
             {/* <IconButton color={colors.text[500]}>
               <CreateIcon />
             </IconButton> */}
@@ -97,7 +98,9 @@ const AgencyAdmin = () => {
 
   const [loading, setLoading] = useState(true);
 
-  return loading ? "" : (
+  return loading ? (
+    ""
+  ) : (
     <Box sx={{ height: "90%", width: "100%" }}>
       <Box
         width="100%"
