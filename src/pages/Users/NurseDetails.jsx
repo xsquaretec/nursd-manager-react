@@ -1,8 +1,10 @@
-import { Typography, useTheme } from "@mui/material";
+import { alpha, Box, Button, FormControl, InputLabel, MenuItem, Select, styled, Switch, Typography, useTheme } from "@mui/material";
+import { teal } from "@mui/material/colors";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Heading from "../../components/Heading";
+import { useAuth } from "../../context/auth";
 import { tokens } from "../../theme/theme";
 
 const NurseDetails = () => {
@@ -10,33 +12,60 @@ const NurseDetails = () => {
   const [pageData, setPageData] = useState([]);
   const [data, setData] = useState([]);
 
-  console.log(pageData)
+  const auth = useAuth();
+
   const getData = async () => {
     await fetch(
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/user/${pathname.str}`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${auth.user}`,
         },
       }
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setPageData(res.data);
-      });
+      })
+      .then(() => setLoading(false));
   };
 
   useEffect(() => {
     getData();
-  }, [pathname]);
+  }, [pathname, auth]);
 
-  console.log(pageData, 'pagedata')
+  console.log(pageData, "pagedata");
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [loading, setLoading] = useState(true);
 
 
-  return (
+  const PinkSwitch = styled(Switch)(({ theme }) => ({
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      color: teal[500],
+      "&:hover": {
+        backgroundColor: alpha(teal[500], theme.palette.action.hoverOpacity),
+      },
+    },
+    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+      backgroundColor: teal[500],
+    },
+  }));
+  const label = {
+    inputProps: {
+      "aria-label": "Color switch demo",
+      "aria-label": "Checkbox demo",
+    },
+  };
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);}
+
+  return loading ? (
+    ""
+  ) : (
     <div>
       <Heading
         title={`${pageData.firstName + " " + pageData.lastName} Details`}
@@ -57,6 +86,30 @@ const NurseDetails = () => {
               {pageData.gender} | {moment().diff(pageData.dateOfBirth, "years")}{" "}
               YR
             </p>
+            <div className="grid grid-flow-col gap-2 items-center">
+            <p className="text-lg">Email ID :</p>
+            <p classname="">{pageData.email}</p>
+          </div>
+          <Box sx={{ minWidth: 140 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Status</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value="">
+          <em>none</em>
+          </MenuItem>
+          <MenuItem value={10}>Active</MenuItem>
+          <MenuItem value={20}>Deactive</MenuItem>
+          <MenuItem value={30}>Suspend</MenuItem>
+          <MenuItem value={30}>Block</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
           </div>
         </div>
         <div className="border-l pl-10">
@@ -79,10 +132,7 @@ const NurseDetails = () => {
             <p className="text-lg">Mobile No.</p>
             <p className="">{pageData.phoneNumber}</p>
           </div>
-          <div className="grid grid-cols-2">
-            <p className="text-lg">Email ID</p>
-            <p classname="">{pageData.email}</p>
-          </div>
+          
           {/* <div className="grid grid-cols-2">
             <p className="text-lg">Height</p>
             <p className="">150 cm</p>
@@ -93,11 +143,20 @@ const NurseDetails = () => {
           </div> */}
           <div className="grid grid-cols-2">
             <p className="text-lg">Address</p>
-            <p className="">
-              {pageData?.address?.street} , {pageData?.address?.city},{" "}
-              {pageData?.address?.zip}, {pageData?.address?.state},{" "}
+            <a
+              href={`https://maps.google.com/maps?q=${
+                pageData?.address?.street +
+                pageData?.address?.city +
+                pageData?.address?.zip +
+                pageData?.address?.state +
+                pageData?.address?.country
+              }`}
+              className=""
+            >
+              {pageData?.address?.street} , {pageData?.address?.city},
+              {pageData?.address?.zip}, {pageData?.address?.state},
               {pageData?.address?.country}
-            </p>
+            </a>
           </div>
           <div className="">
             <Typography
@@ -153,7 +212,7 @@ const NurseDetails = () => {
             <p className="">L212344</p>
           </div>
           <div className="grid grid-cols-2">
-            <p className="text-lg">Clinical Licence Expire At</p>
+            <p className="text-lg">Clinical Licence Expiration At</p>
             <p className="">2028-06-10T12:26:00.000Z</p>
           </div>
           <div className="grid grid-cols-2">
@@ -179,7 +238,7 @@ const NurseDetails = () => {
           >
             Speciality
           </Typography>
-          <p className="text-lg">Address</p>
+          {/* <p className="text-lg">Address</p> */}
         </div>
         <div className="border-l pl-10">
           <Typography
@@ -198,7 +257,7 @@ const NurseDetails = () => {
             <p className="">ACLS</p>
           </div>
           <div className="grid grid-cols-2">
-            <p className="text-lg">Expire At</p>
+            <p className="text-lg">Expiration At</p>
             <p className="">2023-02-07T18:26:22.138Z</p>
           </div>
           <Typography
@@ -240,7 +299,7 @@ const NurseDetails = () => {
               fontWeight: 600,
             }}
           >
-            Ehr Emr Experience
+            EHR EMR Experience
           </Typography>
           <div className="grid grid-cols-2">
             <p className="text-lg">0</p>

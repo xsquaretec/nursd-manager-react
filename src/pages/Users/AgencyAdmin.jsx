@@ -1,20 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, Button, ButtonGroup, IconButton } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  useTheme,
+} from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CreateIcon from "@mui/icons-material/Create";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
+import { tokens } from "../../theme/theme";
+import { useAuth } from "../../context/auth";
 
 const AgencyAdmin = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
   const [pageData, setPageData] = useState([]);
+
+  const auth = useAuth();
 
   const getData = async () => {
     await fetch(
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?skip=1&limit=100&role=admin`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${auth.user}`,
         },
       }
     )
@@ -25,7 +39,7 @@ const AgencyAdmin = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [auth]);
 
   function getFullName(params) {
     return `${params.row.firstName || ""} ${params.row.lastName || ""}`;
@@ -71,7 +85,8 @@ const AgencyAdmin = () => {
             <IconButton color="primary">
               <RemoveRedEyeOutlinedIcon />
             </IconButton>
-            <IconButton color="secondary">
+
+            <IconButton color={colors.text[500]}>
               <CreateIcon />
             </IconButton>
           </ButtonGroup>
@@ -82,7 +97,7 @@ const AgencyAdmin = () => {
 
   const [loading, setLoading] = useState(true);
 
-  return (
+  return loading ? "" : (
     <Box sx={{ height: "90%", width: "100%" }}>
       <Box
         width="100%"
@@ -93,11 +108,18 @@ const AgencyAdmin = () => {
         }}
       >
         <Heading title="Agency Admin Details" />
-        <Link to="/add-agency-admin">
-          <Button variant="outlined" sx={{ fontWeight: "700" }}>
-            Add New Agency
-          </Button>
-        </Link>
+        <Box className="flex gap-5">
+          <Link to="/csv-upload/admin">
+            <Button variant="outlined" sx={{ fontWeight: "700" }}>
+              Bulk Upload
+            </Button>
+          </Link>
+          <Link to="/add-agency-admin">
+            <Button variant="outlined" sx={{ fontWeight: "700" }}>
+              Add New Agency
+            </Button>
+          </Link>
+        </Box>
       </Box>
       <DataGrid
         sx={{ height: "100%" }}

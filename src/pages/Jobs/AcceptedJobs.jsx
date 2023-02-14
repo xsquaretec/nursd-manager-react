@@ -4,16 +4,22 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
+import { useAuth } from "../../context/auth";
 
 const AcceptedJobs = () => {
+  const auth = useAuth();
+
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
-    await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job?isJobAcceptedByManager=true`, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-      },
-    })
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job?isJobAcceptedByManager=true`,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((res) => setPageData(res.data))
       .then(() => setLoading(false));

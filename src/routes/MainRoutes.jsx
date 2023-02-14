@@ -19,6 +19,7 @@ import AdminSidebar from "../components/AdminSidebar";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import Logout from "../pages/Auth/Logout";
+import CSVUpload from "../pages/CSVUpload";
 import AddNewJobs from "../pages/Jobs/AddNewJobs";
 import Profile from "../pages/Account/Profile";
 
@@ -48,6 +49,7 @@ const MainRoutes = () => {
               <PerfectScrollbar>
                 <Routes>
                   <Route path="/logout" element={<Logout />} />
+                  <Route path="/csv-upload/:str" element={<CSVUpload  />} />
 
                   <Route path="/" element={<Home />} />
                   <Route path="/all-agency-admin" element={<AgencyAdmin />} />

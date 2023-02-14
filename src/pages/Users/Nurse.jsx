@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, ButtonGroup, IconButton } from "@mui/material";
+import { Avatar, Box, ButtonGroup, IconButton, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CreateIcon from "@mui/icons-material/Create";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
+import { tokens } from "../../theme/theme";
+import { useAuth } from "../../context/auth";
 
 const Nurse = () => {
-  const [pageData, setPageData] = useState([]);
-  console.log(pageData)
-
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   
+  const [pageData, setPageData] = useState([]);
+  
+
+  const auth = useAuth();
 
   const getData = async () => {
     await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/user`, {
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTBmMzhhOWU5ZjA4OWNlOTRkZDkxYyIsImVtYWlsIjoibWFuYWdlckBnbWFpbC5jb20iLCJwaG9uZU51bWJlciI6IjYzNTIzMjg1NDciLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTY3NjM1NDgwMywiZXhwIjoxNjc4OTQ2ODAzfQ.awbk2QT1VKgm7i0aQIMSWITE-48BAfzf9nd_z9mSMb8`,
+        Authorization: `Bearer ${auth.user}`,
       },
     })
       .then((res) => res.json())
@@ -23,11 +28,9 @@ const Nurse = () => {
       .then(() => setLoading(false));
   };
 
-  console.log(getData())
-
   useEffect(() => {
     getData();
-  }, []);
+  }, [auth , auth ]);
 
   function getFullName(params) {
     return `${params.row.firstName || ""} ${params.row.lastName || ""}`;
@@ -61,7 +64,7 @@ const Nurse = () => {
                 <RemoveRedEyeOutlinedIcon />
               </IconButton>
             </Link>
-            <IconButton color="secondary">
+            <IconButton color={colors.text[500]}>
               <CreateIcon />
             </IconButton>
           </ButtonGroup>
@@ -72,7 +75,7 @@ const Nurse = () => {
 
   const [loading, setLoading] = useState(true);
 
-  return (
+  return loading ? "" : (
     <Box sx={{ height: "90%", width: "100%" }}>
       <Heading title="Nurse Details" />
       <DataGrid

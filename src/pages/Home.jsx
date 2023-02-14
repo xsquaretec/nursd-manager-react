@@ -11,6 +11,7 @@ import Notification from "../components/Dashboard/Notification";
 export const DashboardCard = ({ title, icon, count }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
   return (
     <Box
       p={2}

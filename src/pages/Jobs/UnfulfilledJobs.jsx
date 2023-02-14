@@ -4,14 +4,17 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
+import { useAuth } from "../../context/auth";
 
 const UnfulfilledJobs = () => {
+  const auth = useAuth();
+
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
     await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job?jobStatus=open`, {
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        Authorization: `Bearer ${auth.user}`,
       },
     })
       .then((res) => res.json())
@@ -26,24 +29,7 @@ const UnfulfilledJobs = () => {
   const columns = [
     { field: "jobID", headerName: "Job ID", width: 50 },
     { field: "shiftTitle", headerName: "Shift Title", width: 200 },
-    {
-      field: "expirationDate",
-      headerName: "Expiration",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <p>
-            {moment(params.value).isBefore() ? (
-              <span className="text-red-500 font-bold">
-                Expired {moment(params.value).fromNow()}
-              </span>
-            ) : (
-              moment(params.value).fromNow()
-            )}
-          </p>
-        );
-      },
-    },
+   
 
     {
       field: "startDate",
