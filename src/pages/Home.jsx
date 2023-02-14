@@ -1,10 +1,12 @@
 import { tokens } from "../theme/theme";
 import { useTheme } from "@emotion/react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DashBG from "../assets/dashboard_bg.png";
 import Nurse from "../assets/Nurse.svg";
 import Agencies from "../assets/Agencies.svg";
+import Notification from "../components/Dashboard/Notification";
+
 
 export const DashboardCard = ({ title, icon, count }) => {
   const theme = useTheme();
@@ -16,11 +18,12 @@ export const DashboardCard = ({ title, icon, count }) => {
       height={200}
       borderRadius={2}
       sx={{
-        backgroundImage: `url('${DashBG}')`,
+        // backgroundImage: `url('${DashBG}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         borderLeft: "5px solid #13B493",
+        backgroundColor: "#F2FAF8"
       }}
       display="flex"
       justifyContent="space-between"
@@ -77,13 +80,17 @@ const Home = () => {
 
       <Grid container spacing={5} mb={5}>
         <Grid item xs={4}>
-          <DashboardCard title="Total Agencies" count={pageData.totlaAgencyAdmin} icon={Agencies} />
+          <Link href="/all-agency-admin">
+          <DashboardCard title="Total Agencies" count={pageData?.totlaAgencyAdmin} icon={Agencies} />
+          </Link>
         </Grid>
         <Grid item xs={4}>
-          <DashboardCard title="Total Nurses" count={pageData.totalNurse} icon={Nurse} />
+          <Link href="/all-nurse">
+          <DashboardCard title="Total Nurses" count={pageData?.totalNurse} icon={Nurse} />
+          </Link>
         </Grid>
         <Grid item xs={4}>
-          <DashboardCard title="Total Jobs" count={pageData.totalPostedJobs} />
+          <DashboardCard title="Total Jobs" count={pageData?.totalPostedJobs} />
         </Grid>
       </Grid>
 
@@ -135,6 +142,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Grid>
+      <Notification/>
     </Box>
   );
 };
