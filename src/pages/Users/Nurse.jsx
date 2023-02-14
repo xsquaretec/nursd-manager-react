@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, ButtonGroup, IconButton } from "@mui/material";
+import { Avatar, Box, ButtonGroup, IconButton, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CreateIcon from "@mui/icons-material/Create";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
+import { tokens } from "../../theme/theme";
 
 const Nurse = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
@@ -56,7 +60,7 @@ const Nurse = () => {
                 <RemoveRedEyeOutlinedIcon />
               </IconButton>
             </Link>
-            <IconButton color="secondary">
+            <IconButton color={colors.text[500]}>
               <CreateIcon />
             </IconButton>
           </ButtonGroup>

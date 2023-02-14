@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, Button, ButtonGroup, IconButton } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  useTheme,
+} from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import CreateIcon from "@mui/icons-material/Create";
 import Heading from "../../components/Heading";
 import { Link } from "react-router-dom";
+import { tokens } from "../../theme/theme";
 
 const AgencyAdmin = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
@@ -71,7 +82,8 @@ const AgencyAdmin = () => {
             <IconButton color="primary">
               <RemoveRedEyeOutlinedIcon />
             </IconButton>
-            <IconButton color="secondary">
+
+            <IconButton color={colors.text[500]}>
               <CreateIcon />
             </IconButton>
           </ButtonGroup>
@@ -93,11 +105,18 @@ const AgencyAdmin = () => {
         }}
       >
         <Heading title="Agency Admin Details" />
-        <Link to="/add-agency-admin">
-          <Button variant="outlined" sx={{ fontWeight: "700" }}>
-            Add New Agency
-          </Button>
-        </Link>
+        <Box className="flex gap-5">
+          <Link to="/csv-upload/admin">
+            <Button variant="outlined" sx={{ fontWeight: "700" }}>
+              Bulk Upload
+            </Button>
+          </Link>
+          <Link to="/add-agency-admin">
+            <Button variant="outlined" sx={{ fontWeight: "700" }}>
+              Add New Agency
+            </Button>
+          </Link>
+        </Box>
       </Box>
       <DataGrid
         sx={{ height: "100%" }}

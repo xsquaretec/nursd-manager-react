@@ -90,11 +90,11 @@ const NurseDetails = () => {
           </div> */}
           <div className="grid grid-cols-2">
             <p className="text-lg">Address</p>
-            <p className="">
-              {pageData?.address?.street} , {pageData?.address?.city},{" "}
-              {pageData?.address?.zip}, {pageData?.address?.state},{" "}
+            <a href={`https://maps.google.com/maps?q=${pageData?.address?.street + pageData?.address?.city + pageData?.address?.zip  + pageData?.address?.state + pageData?.address?.country}`} className="">
+              {pageData?.address?.street} , {pageData?.address?.city},
+              {pageData?.address?.zip}, {pageData?.address?.state},
               {pageData?.address?.country}
-            </p>
+            </a>
           </div>
           <div className="">
             <Typography
