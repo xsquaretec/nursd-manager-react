@@ -1,4 +1,4 @@
-import { Box, IconButton, Link, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import React from "react";
 import Logo from "../assets/logo.svg";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -15,6 +15,8 @@ import {
 } from "@mui/icons-material";
 import Popover from "@mui/material/Popover";
 import { teal } from "@mui/material/colors";
+
+import { Link } from "react-router-dom";
 
 const AdminNavbar = () => {
   const theme = useTheme();
@@ -116,7 +118,7 @@ const AdminNavbar = () => {
                     },
                   }}
                 >
-                  <Link href="/profile" style={{ textDecoration: "none" }}>
+                  <Link to="/profile" style={{ textDecoration: "none" }}>
                     View Profile
                   </Link>
                 </Typography>
@@ -143,6 +145,7 @@ const AdminNavbar = () => {
                   Account setting
                 </Typography>
               </Box>
+              <Link to="/logout">
               <Box className="flex items-center  p-2 px-4">
                 <ExitToAppOutlined
                   sx={{
@@ -164,6 +167,7 @@ const AdminNavbar = () => {
                   Sign Out
                 </Typography>
               </Box>
+              </Link>
             </Popover>
           </IconButton>
         </Box>
