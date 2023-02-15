@@ -182,7 +182,7 @@ const Manager = () => {
           <img
             src={process.env.REACT_APP_PUBLIC_IAMGE_URL + pageData.profileImage}
             alt="manager profile"
-            className="min-w-60 min-h-60 object-cover rounded-full mb-10"
+            className="w-60 h-60 object-cover rounded-full mb-10"
           />
           <div className="flex flex-col gap-2">
             <p className="text-3xl font-bold ">

@@ -1,12 +1,14 @@
 import { tokens } from "../theme/theme";
 import { useTheme } from "@emotion/react";
-import { Box, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DashBG from "../assets/dashboard_bg.png";
 import Nurse from "../assets/Nurse.svg";
 import Agencies from "../assets/Agencies.svg";
 import Notification from "../components/Dashboard/Notification";
 import { useAuth } from "../context/auth";
+
+import { Link } from "react-router-dom";
 
 export const DashboardCard = ({ title, icon, count }) => {
   const theme = useTheme();
@@ -86,7 +88,7 @@ const Home = () => {
 
       <Grid container spacing={5} mb={5}>
         <Grid item xs={4}>
-          <Link href={"all-agency-admin"} style={{ textDecoration: "none" }}>
+          <Link to={"all-agency-admin"} style={{ textDecoration: "none" }}>
             <DashboardCard
               title="Total Agencies"
               count={pageData?.totlaAgencyAdmin}
@@ -95,7 +97,7 @@ const Home = () => {
           </Link>
         </Grid>
         <Grid item xs={4}>
-          <Link href={"all-nurse"} style={{ textDecoration: "none" }}>
+          <Link to={"all-nurse"} style={{ textDecoration: "none" }}>
             <DashboardCard
               title="Total Nurses"
               count={pageData?.totalNurse}
