@@ -24,6 +24,7 @@ import AddNewJobs from "../pages/Jobs/AddNewJobs";
 import Profile from "../pages/Account/Profile";
 import Manager from "../pages/Users/SingleProfile/Manager";
 import AgencyAdminProfile from "../pages/Users/SingleProfile/AgencyAdminProfile";
+import Bid from "../pages/Jobs/Bid";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -95,6 +96,8 @@ const MainRoutes = () => {
                     path="/unfulfilled-jobs"
                     element={<UnfulfilledJobs />}
                   />
+
+                  <Route path="/bids" element={<Bid />} />
 
                   {/* Profile Routes */}
                   <Route path="/profile" element={<Profile />} />

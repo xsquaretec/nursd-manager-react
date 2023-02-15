@@ -1,4 +1,4 @@
-import { Avatar, Link, Typography } from "@mui/material";
+import { Avatar, FormControl, InputLabel, Link, MenuItem, Select, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
@@ -152,7 +152,24 @@ const Notification = () => {
           <div className="border border-teal-500 mb-10 rounded-md">
             <div className="flex  items-center justify-between p-3 mb-2 font-bold border-teal-500 border-b-2 rounded-b-md bg-[#6dfdde5d] ">
               <p className="text-xl">Support Requests</p>
-              <p className="mr-5">Ticket</p>
+              <FormControl sx={{ m: 1, minWidth: 150, }}>
+              <InputLabel id="demo-simple-select-autowidth-label">
+                Ticket
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                autoWidth
+                label="Select Job"
+                
+              >
+                <MenuItem value="">
+                  <em>none</em>
+                </MenuItem>
+                <MenuItem value={"nurse"}>Nurse</MenuItem>
+                <MenuItem value={"manager"}>Manager</MenuItem>
+              </Select>
+            </FormControl>
             </div>
 
             {ticket.map((item, index) => (
