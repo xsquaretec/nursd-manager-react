@@ -22,9 +22,14 @@ export const AuthProvider = ({ children }) => {
     )
       .then((res) => res.json())
       .then((res) => {
-        localStorage.setItem("token", res.token);
+        if (res.error == false) {
+          localStorage.setItem("token", res.token);
 
-        setUser(res.token);
+          setUser(res.token);
+        }
+        else{
+          alert(res.message)
+        }
       })
       .then(() => navigate("/"));
   };
