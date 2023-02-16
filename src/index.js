@@ -10,7 +10,11 @@ import { AuthProvider } from "./context/auth";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+<<<<<<< HEAD
     <BrowserRouter>
+=======
+    <BrowserRouter basename="/">
+>>>>>>> 78add28e765fd219e98aaf7e92329d6b2e1d718e
     {/* <BrowserRouter basename="/nursd-manager-react/"> */}
       <AuthProvider>
         <Provider store={store}>
