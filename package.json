@@ -1,7 +1,6 @@
 {
   "name": "nursd-manager",
   "version": "0.1.0",
-  "homepage": "https://xsquaretec.github.io/nursd-manager-react",
   "private": true,
   "dependencies": {
     "@date-io/jalaali": "^2.16.1",

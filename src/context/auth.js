@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.clear();
+    navigate("/login")
   };
 
   useEffect(() => {
