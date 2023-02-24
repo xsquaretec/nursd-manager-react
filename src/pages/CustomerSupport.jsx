@@ -5,13 +5,14 @@ import EmailIcon from "@mui/icons-material/Email";
 
 const CustomerSupport = () => {
   const [pageData, setPageData] = useState([]);
+  const auth = useAuth();
 
   const getData = async () => {
     await fetch(
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/customerSupport/63e0f1d09e9f089ce94dd8ee`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${auth.user}`,
         },
       }
     )

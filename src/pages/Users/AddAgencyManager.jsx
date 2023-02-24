@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 const AddAgencyManager = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const auth = useAuth();
+
 
   const {
     register,
@@ -39,7 +41,7 @@ const AddAgencyManager = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        Authorization: `Bearer ${auth.user}`,
       },
     })
       .then((res) => res.json())
@@ -56,7 +58,7 @@ const AddAgencyManager = () => {
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?skip=1&limit=100&role=admin`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${auth.user}`,
         },
       }
     )

@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 const AddAgencyAdmin = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const auth = useAuth();
+
 
   const {
     register,
@@ -43,7 +45,7 @@ const AddAgencyAdmin = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        Authorization: `Bearer ${auth.user}`,
       },
     })
       .then((res) => res.json())
