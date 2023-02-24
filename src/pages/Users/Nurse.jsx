@@ -21,6 +21,7 @@ import { useAuth } from "../../context/auth";
 import CircleIcon from "@mui/icons-material/Circle";
 
 const Nurse = () => {
+  
   const handleChangeStatus = async (e, id) => {
     await fetch(
       `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/changeUserStatus/${id}/${e}`,

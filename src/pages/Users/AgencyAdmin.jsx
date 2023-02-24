@@ -173,6 +173,7 @@ const AgencyAdmin = () => {
         );
       },
     },
+    
   ];
 
   const [loading, setLoading] = useState(true);

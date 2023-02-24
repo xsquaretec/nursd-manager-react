@@ -99,6 +99,8 @@ const MainRoutes = () => {
                     element={<UnfulfilledJobs />}
                   />
 
+                  <Route path="/bids" element={<Bid />} />
+
                   {/* Profile Routes */}
                   <Route path="/profile" element={<Profile />} />
                 </Routes>
