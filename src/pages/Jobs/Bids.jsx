@@ -5,16 +5,18 @@ import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
+import { Link } from "react-router-dom";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
-const UnfulfilledJobs = () => {
+const Bids = () => {
   const auth = useAuth();
 
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
     await fetch(
-      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job?jobStatus=open`,
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/pendingJobAcceptByManager`,
       {
         headers: {
           Authorization: `Bearer ${auth.user}`,
@@ -31,101 +33,74 @@ const UnfulfilledJobs = () => {
   }, []);
 
   const columns = [
-    { field: "jobID", headerName: "Job ID", width: 100 },
-    { field: "shiftTitle", headerName: "Shift Title", width: 200 },
-
     {
-      field: "startDate",
-      headerName: "Shift Date",
-      width: 120,
+      field: "jobID",
+      headerName: "Job ID",
+      width: 100,
       renderCell: (params) => {
-        return moment(params.value).isBefore() ? (
-          <span className="text-red-500 font-bold">
-            {moment(params.value).format("MMM Do YYYY")}
-          </span>
-        ) : (
-          moment(params.value).format("MMM Do YYYY")
-        );
+        return params.row.jobId.jobID;
       },
     },
-
     {
-      field: "startTime",
-      headerName: "Shift Time",
+      field: "shiftTitle",
+      headerName: "Shift Title",
+      width: 200,
+      renderCell: (params) => {
+        return params.row.jobId.shiftTitle;
+      },
+    },
+    {
+      field: "breakManager",
+      headerName: "Break By Manager",
+      width: 100,
+      renderCell: (params) => {
+        return params.row.jobId.break == null
+          ? "No Added"
+          : params.row.jobId.break;
+      },
+    },
+    {
+      field: "baseRate",
+      headerName: "Base Rate",
+      width: 100,
+      renderCell: (params) => {
+        return params.row.jobId.baseRate;
+      },
+    },
+    {
+      field: "maxBidValue",
+      headerName: "Max Bid",
+      width: 100,
+      renderCell: (params) => {
+        return params.row.jobId.maxBidValue;
+      },
+    },
+    {
+      field: "managerName",
+      headerName: "Manager Name",
       width: 150,
       renderCell: (params) => {
         return (
-          moment(params.row.startTime).format("LT") +
-          "-" +
-          moment(params.row.endTime).format("LT")
+          params.row.managerId.firstName + " " + params.row.managerId.lastName
         );
       },
     },
-
     {
-      headerName: "Duration",
+      field: "nurseBreak",
+      headerName: "Nurse Break",
       width: 100,
       renderCell: (params) => {
-        return (
-          moment(params.row.endTime).diff(
-            moment(params.row.startTime),
-            "hours"
-          ) + " hours"
-        );
+        return params.row.nurseBreak == null
+          ? "No Added"
+          : params.row.nurseBreak;
       },
     },
-
     {
-      field: "Address",
-      headerName: "Address",
-      // flex: 1,
-      width: 200,
-      valueGetter: ({ row }) =>
-        row.address.street +
-        " " +
-        row.address.city +
-        " " +
-        row.address.zip +
-        " " +
-        row.address.state +
-        ", " +
-        row.address.country,
-    },
-    {
-      field: "specialty",
-      headerName: "specialty",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="flex gap-1">
-            {params.value.map((item, index) => (
-              <p
-                className="bg-[#0db391] text-white font-bold p-1 rounded-md text-xs"
-                key={index}
-              >
-                {item}
-              </p>
-            ))}
-          </div>
-        );
-      },
-    },
-
-    {
-      field: "break",
-      headerName: "Break",
-      width: 70,
-      renderCell: (params) => {
-        return params.value + " mins";
-      },
-    },
-
-    {
-      field: "baseRate",
-      headerName: "Current Rate",
+      field: "nurseBid",
+      headerName: "Nurse Bid",
       width: 100,
       renderCell: (params) => {
-        return <p className="text-[#278d44] font-bold">$ {params.value}/hr</p>;
+        return params.row.nurseBid;
       },
     },
     {
@@ -136,17 +111,17 @@ const UnfulfilledJobs = () => {
         return (
           <>
             <ButtonGroup size="small" aria-label="small button group">
-              {/* <IconButton
+              <IconButton
                 color="primary"
                 onClick={() =>
                   AcceptBid(params.row.jobId._id, params.row.managerId._id)
                 }
               >
                 <CheckCircleOutlineOutlinedIcon />
-              </IconButton> */}
+              </IconButton>
               <IconButton
                 color="error"
-                onClick={() => RejectJob(params.row._id)}
+                onClick={() => RejectBid(params.row._id)}
               >
                 <CancelOutlinedIcon />
               </IconButton>
@@ -159,23 +134,49 @@ const UnfulfilledJobs = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const RejectJob = async (job) => {
-    await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job/${job}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${auth.user}`,
-      },
-    })
+  const AcceptBid = async (job, user) => {
+    const data = {
+      userId: user,
+    };
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job/acceptBid/${job}`,
+      {
+        body: JSON.stringify(data),
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
+        getData();
+      });
+  };
+
+  const RejectBid = async (job) => {
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/jobAcceptByManager/${job}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
         getData();
       });
   };
 
   return (
     <Box sx={{ height: "90%", width: "100%" }}>
-      <Heading title="Unfulfilled Jobs Details" />
+      <Heading title="Bids" />
       <Box
         sx={{
           height: "100%",
@@ -206,4 +207,4 @@ const UnfulfilledJobs = () => {
   );
 };
 
-export default UnfulfilledJobs;
+export default Bids;

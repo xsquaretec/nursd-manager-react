@@ -32,7 +32,7 @@ export const sidebarAPI = [
       { name: "Accepted Jobs", link: "/accepted-jobs" },
       { name: "Completed Jobs", link: "/completed-jobs" },
       { name: "Unfulfilled Jobs", link: "/unfulfilled-jobs" },
-      { name: "Pending Jobs", link: "/pending-jobs" },
+      // { name: "Pending Jobs", link: "/pending-jobs" },
       { name: "Bids", link: "/bids" },
     ],
   },

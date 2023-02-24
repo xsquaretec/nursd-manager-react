@@ -24,6 +24,7 @@ import AddNewJobs from "../pages/Jobs/AddNewJobs";
 import Profile from "../pages/Account/Profile";
 import Manager from "../pages/Users/SingleProfile/Manager";
 import AgencyAdminProfile from "../pages/Users/SingleProfile/AgencyAdminProfile";
+import Bids from "../pages/Jobs/Bids";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -87,6 +88,8 @@ const MainRoutes = () => {
                   />
 
                   {/* Jobs */}
+                  <Route path="/bids" element={<Bids />} />
+
                   <Route path="/add-new-jobs" element={<AddNewJobs />} />
                   <Route path="/posted-jobs" element={<PostedJobs />} />
                   <Route path="/accepted-jobs" element={<AcceptedJobs />} />

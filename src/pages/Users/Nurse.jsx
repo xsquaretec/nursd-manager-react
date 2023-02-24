@@ -50,7 +50,7 @@ const Nurse = () => {
       },
     })
       .then((res) => res.json())
-      .then((res) => setPageData(res.data))
+      .then((res) => res.data !== undefined && setPageData(res.data))
       .then(() => setLoading(false));
   };
 
