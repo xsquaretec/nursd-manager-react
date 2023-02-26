@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Heading from "../../components/Heading";
 import { tokens } from "../../theme/theme";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../context/auth";
 
 const AddAgencyManager = () => {
   const theme = useTheme();

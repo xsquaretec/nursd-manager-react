@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
+import { useAuth } from "../context/auth";
 
 const CustomerSupport = () => {
   const [pageData, setPageData] = useState([]);
