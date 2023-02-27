@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/auth";
 
 const style = {
+  borderRadius: "10px",
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 800,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
@@ -57,7 +57,7 @@ const SuperAdminProfile = () => {
   ) : (
     <>
       <Modal
-      sx={{border:"none"}}
+        sx={{ borderRadius: "15px" }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

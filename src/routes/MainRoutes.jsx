@@ -21,7 +21,6 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import Logout from "../pages/Auth/Logout";
 import CSVUpload from "../pages/CSVUpload";
 import AddNewJobs from "../pages/Jobs/AddNewJobs";
-import Profile from "../pages/Account/Profile";
 import Manager from "../pages/Users/SingleProfile/Manager";
 import AgencyAdminProfile from "../pages/Users/SingleProfile/AgencyAdminProfile";
 import Bids from "../pages/Jobs/Bids";
@@ -101,7 +100,6 @@ const MainRoutes = () => {
                   />
 
                   {/* Profile Routes */}
-                  <Route path="/profile" element={<Profile />} />
                   <Route path="/superadmin-profile" element={<SuperAdminProfile />} />
                 </Routes>
               </PerfectScrollbar>
