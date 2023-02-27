@@ -72,6 +72,7 @@ const AdminNavbar = () => {
       >
         <Box></Box>
         <Box>
+          <Link to="/superadmin-profile">
           <IconButton
             TouchRippleProps={{
               style: {
@@ -88,88 +89,10 @@ const AdminNavbar = () => {
             <AccountCircle
               aria-describedby={id}
               variant="contained"
-              onClick={handleClick}
             />
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-            >
-              <Box className="flex items-center p-2 px-4">
-                <Person2Outlined
-                  sx={{
-                    color: teal[500],
-                    "&.Mui-checked": {
-                      color: teal[500],
-                    },
-                  }}
-                />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: teal[500],
-                    "&.Mui-checked": {
-                      color: teal[500],
-                    },
-                  }}
-                >
-                  <Link to="/profile" style={{ textDecoration: "none" }}>
-                    View Profile
-                  </Link>
-                </Typography>
-              </Box>
-
-              <Box className="flex items-center  p-2 px-4">
-                <SettingsOutlined
-                  sx={{
-                    color: teal[500],
-                    "&.Mui-checked": {
-                      color: teal[500],
-                    },
-                  }}
-                />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: teal[500],
-                    "&.Mui-checked": {
-                      color: teal[500],
-                    },
-                  }}
-                >
-                  Account setting
-                </Typography>
-              </Box>
-              <Link to="/logout">
-              <Box className="flex items-center  p-2 px-4">
-                <ExitToAppOutlined
-                  sx={{
-                    color: teal[500],
-                    "&.Mui-checked": {
-                      color: teal[500],
-                    },
-                  }}
-                />
-                <Typography
-                  sx={{
-                    p: 1,
-                    color: teal[500],
-                    "&.Mui-checked": {
-                      color: teal[500],
-                    },
-                  }}
-                >
-                  Sign Out
-                </Typography>
-              </Box>
-              </Link>
-            </Popover>
+            
           </IconButton>
+          </Link>
         </Box>
       </Box>
     </Box>

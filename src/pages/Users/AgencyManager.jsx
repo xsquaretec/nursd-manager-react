@@ -43,7 +43,7 @@ const AgencyManager = () => {
 
   const getData = async () => {
     await fetch(
-      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?role=manager`,
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerProfile?role=manager&skip=1&limit=100`,
       {
         headers: {
           Authorization: `Bearer ${auth.user}`,

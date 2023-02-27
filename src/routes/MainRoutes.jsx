@@ -25,6 +25,7 @@ import Profile from "../pages/Account/Profile";
 import Manager from "../pages/Users/SingleProfile/Manager";
 import AgencyAdminProfile from "../pages/Users/SingleProfile/AgencyAdminProfile";
 import Bids from "../pages/Jobs/Bids";
+import SuperAdminProfile from "../pages/Users/SingleProfile/SuperAdminProfile";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -101,6 +102,7 @@ const MainRoutes = () => {
 
                   {/* Profile Routes */}
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="/superadmin-profile" element={<SuperAdminProfile />} />
                 </Routes>
               </PerfectScrollbar>
             </Box>
