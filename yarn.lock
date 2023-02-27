@@ -26,7 +26,7 @@
 
 "@arr/every@^1.0.0":
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@arr/every/-/every-1.0.1.tgz#22fe1f8e6355beca6c7c7bde965eb15cf994387b"
+  resolved "https://registry.npmjs.org/@arr/every/-/every-1.0.1.tgz"
   integrity sha512-UQFQ6SgyJ6LX42W8rHCs8KVc0JS0tzVL9ct4XYedJukskYVWTo49tNiMEK9C2HTyarbNiT/RVIRSY82vH+6sTg==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0", "@babel/code-frame@^7.18.6", "@babel/code-frame@^7.8.3":
@@ -2344,14 +2344,14 @@
 
 "@types/lodash.memoize@^4.1.7":
   version "4.1.7"
-  resolved "https://registry.yarnpkg.com/@types/lodash.memoize/-/lodash.memoize-4.1.7.tgz#aff94ab32813c557cbc1104e127030e3d60a3b27"
+  resolved "https://registry.npmjs.org/@types/lodash.memoize/-/lodash.memoize-4.1.7.tgz"
   integrity sha512-lGN7WeO4vO6sICVpf041Q7BX/9k1Y24Zo3FY0aUezr1QlKznpjzsDk3T3wvH8ofYzoK0QupN9TWcFAFZlyPwQQ==
   dependencies:
     "@types/lodash" "*"
 
 "@types/lodash@*":
   version "4.14.191"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.191.tgz#09511e7f7cba275acd8b419ddac8da9a6a79e2fa"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.191.tgz"
   integrity sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==
 
 "@types/mime@*":
@@ -2394,18 +2394,7 @@
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-<<<<<<< HEAD
-"@types/react-dom@*":
-  version "18.0.11"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.11.tgz#321351c1459bc9ca3d216aefc8a167beec334e33"
-  integrity sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-dom@^18.0.0":
-=======
-"@types/react-dom@^16.8 || ^17.0 || ^18.0", "@types/react-dom@^18.0.0":
->>>>>>> 2e8713a65d4f5bb9acd9b24139db2a081a359956
+"@types/react-dom@*", "@types/react-dom@^16.8 || ^17.0 || ^18.0", "@types/react-dom@^18.0.0":
   version "18.0.10"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.10.tgz"
   integrity sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==
@@ -2740,7 +2729,7 @@
 
 "@wojtekmaj/date-utils@^1.0.0", "@wojtekmaj/date-utils@^1.1.2":
   version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@wojtekmaj/date-utils/-/date-utils-1.1.2.tgz#e22d3b6fe4559cd4b47e439b9f9fc51d1bc1fa64"
+  resolved "https://registry.npmjs.org/@wojtekmaj/date-utils/-/date-utils-1.1.2.tgz"
   integrity sha512-06PQad/6pyYDjInBW2ih4Oy30EAg0mtXTCz+b/fGwzN2JB2X2Zsa4QtHl4I8M+IaCKN8bwj61OW3XAWxh+D9hA==
 
 "@xtuc/ieee754@^1.2.0":
@@ -3549,7 +3538,7 @@ cliui@^7.0.2:
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
 
-clsx@^1.2.1:
+clsx@^1.1.1, clsx@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
@@ -4114,7 +4103,7 @@ destroy@1.2.0:
 
 detect-element-overflow@^1.3.1:
   version "1.3.1"
-  resolved "https://registry.yarnpkg.com/detect-element-overflow/-/detect-element-overflow-1.3.1.tgz#1a83f11abfd70c4dec750f214c7d7808c5c19638"
+  resolved "https://registry.npmjs.org/detect-element-overflow/-/detect-element-overflow-1.3.1.tgz"
   integrity sha512-E29Axx3pyotgg3j5HUbusTTarjPUHsC02p7fZ3/cnUufyK0kx5RzRA9waBvrKFWGc/LWiRj3pD9Y3y+mymMYiQ==
 
 detect-newline@^3.0.0:
@@ -5215,14 +5204,14 @@ get-symbol-description@^1.0.0:
 
 get-user-locale@^1.2.0:
   version "1.5.1"
-  resolved "https://registry.yarnpkg.com/get-user-locale/-/get-user-locale-1.5.1.tgz#18a9ba2cfeed0e713ea00968efa75d620523a5ea"
+  resolved "https://registry.npmjs.org/get-user-locale/-/get-user-locale-1.5.1.tgz"
   integrity sha512-WiNpoFRcHn1qxP9VabQljzGwkAQDrcpqUtaP0rNBEkFxJdh4f3tik6MfZsMYZc+UgQJdGCxWEjL9wnCUlRQXag==
   dependencies:
     lodash.memoize "^4.1.1"
 
 get-user-locale@^2.0.0:
   version "2.1.3"
-  resolved "https://registry.yarnpkg.com/get-user-locale/-/get-user-locale-2.1.3.tgz#26898ecb732821e047d77dc1ff5709d5d1df3f4a"
+  resolved "https://registry.npmjs.org/get-user-locale/-/get-user-locale-2.1.3.tgz"
   integrity sha512-2mvzWs9z6qKjw8uvuo2ivpBKg5nHdTe4BERpv+A2POAcfEFaaTkagFKKG9A2tAQjn6NfTVO5V1pTqQbA6AGyog==
   dependencies:
     "@types/lodash.memoize" "^4.1.7"
@@ -6819,7 +6808,7 @@ make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
 
 make-event-props@^1.1.0:
   version "1.4.2"
-  resolved "https://registry.yarnpkg.com/make-event-props/-/make-event-props-1.4.2.tgz#b140e8a63b7aaf1bff9ac5a2fa453a6d2dd1ecfe"
+  resolved "https://registry.npmjs.org/make-event-props/-/make-event-props-1.4.2.tgz"
   integrity sha512-ZOHqRpLn2htnMd9zqhE+wticVr31PdwrJXHcvEEdKgrfjCOuSDn8urG9SDzEIqzP1ayp1uTdDJcOiTlJhqWpEQ==
 
 makeerror@1.0.12:
@@ -6831,7 +6820,7 @@ makeerror@1.0.12:
 
 matchit@^1.0.8:
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/matchit/-/matchit-1.1.0.tgz#c4ccf17d9c824cc1301edbcffde9b75a61d10a7c"
+  resolved "https://registry.npmjs.org/matchit/-/matchit-1.1.0.tgz"
   integrity sha512-+nGYoOlfHmxe5BW5tE0EMJppXEwdSf8uBA1GTZC7Q77kbT35+VKLYJMzVNWCHSsga1ps1tPYFtFyvxvKzWVmMA==
   dependencies:
     "@arr/every" "^1.0.0"
@@ -7193,7 +7182,7 @@ open@^8.0.9, open@^8.4.0:
 
 operator@^1.8.0:
   version "1.8.0"
-  resolved "https://registry.yarnpkg.com/operator/-/operator-1.8.0.tgz#d313b276ddf7912c3ece05f27e0dcb661709eb61"
+  resolved "https://registry.npmjs.org/operator/-/operator-1.8.0.tgz"
   integrity sha512-5LeIYxW+AJMhKrSmFNKbiHW6ZjF2Cxifmnwjy2LDcSWYSNdgYjYF4LPLTUrEnz67OUqVFJed8W8wJg7Cb1aaEw==
   dependencies:
     matchit "^1.0.8"
@@ -8141,7 +8130,7 @@ react-app-polyfill@^3.0.0:
 
 react-clock@^4.0.0:
   version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-clock/-/react-clock-4.1.0.tgz#e48313d90e1ba2b8a6167804dc58a6a9cea8945b"
+  resolved "https://registry.npmjs.org/react-clock/-/react-clock-4.1.0.tgz"
   integrity sha512-1BxIDxH8PcEBEUZDIXXS2njK5Gb84U5egTKXZDimF4aKO1bq+/bdX+chMNouLmaOSYB1of3DriLb0WhLOr8lAA==
   dependencies:
     "@types/react" "*"
@@ -8180,7 +8169,7 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-"react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, react-dom@>=16.3.3, react-dom@>=16.6.0, react-dom@>=16.8:
+"react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, react-dom@>=16, react-dom@>=16.3.3, react-dom@>=16.6.0, react-dom@>=16.8:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -8195,7 +8184,7 @@ react-error-overlay@^6.0.11:
 
 react-fit@^1.4.0:
   version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-fit/-/react-fit-1.5.0.tgz#ef0ed7d9b414d147cf9afc4464adfdc42305aa74"
+  resolved "https://registry.npmjs.org/react-fit/-/react-fit-1.5.0.tgz"
   integrity sha512-U9RxtM55RrNlGZp76r3QPWwSZ74r8NUOvwxwNOk+0vLlu/oJwP+6vjCkaOTw1hf8SzY0tmI07HwDdW/2CXYeLQ==
   dependencies:
     "@types/react" "*"
@@ -8331,7 +8320,7 @@ react-scripts@5.0.1:
 
 react-time-picker@^5.2.0:
   version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-time-picker/-/react-time-picker-5.2.0.tgz#e2c49a2b852b63009627084d674705d262f1b7f8"
+  resolved "https://registry.npmjs.org/react-time-picker/-/react-time-picker-5.2.0.tgz"
   integrity sha512-lM3gISzmPWsG3pZ+D2P/QNF0lrRW9qwpv9mejvwOAlVCuwX7O3nXDHE7gShi/aAd6i9YdU53r3gtDdYg2k+IRQ==
   dependencies:
     "@wojtekmaj/date-utils" "^1.0.0"
@@ -8343,6 +8332,13 @@ react-time-picker@^5.2.0:
     react-fit "^1.4.0"
     update-input-width "^1.2.2"
 
+react-toastify@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.npmjs.org/react-toastify/-/react-toastify-9.1.1.tgz"
+  integrity sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw==
+  dependencies:
+    clsx "^1.1.1"
+
 react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
@@ -8353,7 +8349,7 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-"react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16.3.3, react@>=16.6.0, react@>=16.8, react@>=16.8.0:
+"react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", react@>=16, react@>=16.3.3, react@>=16.6.0, react@>=16.8, react@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -9365,7 +9361,7 @@ thunky@^1.0.2:
 
 tiny-warning@^1.0.0:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
+  resolved "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
 tmpl@1.0.5:
@@ -9596,7 +9592,7 @@ update-browserslist-db@^1.0.9:
 
 update-input-width@^1.2.2:
   version "1.3.1"
-  resolved "https://registry.yarnpkg.com/update-input-width/-/update-input-width-1.3.1.tgz#35d9e56da9e89b57ca84d806a0383b3ff41ca0c0"
+  resolved "https://registry.npmjs.org/update-input-width/-/update-input-width-1.3.1.tgz"
   integrity sha512-hV2DGiSn7FKerjIXaI3s0EG/AnmAeoRTV5cvpsFcygzUzKreYj5qSu7rVihzUOEXF/MP2mjJpUzwi14sZdp0nw==
 
 uri-js@^4.2.2:

@@ -1,15 +1,20 @@
-import {  Button, useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Heading from "../../components/Heading";
 import { tokens } from "../../theme/theme";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AddAgencyManager = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const auth = useAuth();
 
+  const successMsg = (e) => toast.success(e);
+  const errorMsg = (e) => toast.error(e);
 
   const {
     register,
@@ -47,7 +52,11 @@ const AddAgencyManager = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        if (res.error) {
+          errorMsg(res.message);
+        } else {
+          successMsg(res.message);
+        }
         reset();
       });
   };
@@ -74,7 +83,19 @@ const AddAgencyManager = () => {
   return (
     <>
       <Heading title="Add Manager" />
-
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        limit={3}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-3 gap-10">
