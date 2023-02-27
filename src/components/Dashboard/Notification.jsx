@@ -1,4 +1,12 @@
-import { Avatar, FormControl, InputLabel, Link, MenuItem, Select, Typography } from "@mui/material";
+import {
+  Avatar,
+  FormControl,
+  InputLabel,
+  Link,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
@@ -38,7 +46,7 @@ const Notification = () => {
       <div className="grid grid-cols-2 gap-10 mt-10 ">
         {/* Notification */}
 
-        <div className="border border-teal-500 rounded-md ">
+        {/* <div className="border border-teal-500 rounded-md ">
           <p className="text-xl p-3 mb-2 font-bold border-teal-500 border-b-2 rounded-b-md bg-[#6dfdde5d]">
             Notification
           </p>
@@ -92,11 +100,11 @@ const Notification = () => {
               </TimelineItem>
             </Timeline>
           </div>
-        </div>
+        </div> */}
 
         {/* Recent Activity */}
 
-        <div className="mr-8">
+        {/* <div className="mr-8">
           <div className="border border-teal-500 rounded-md">
             <p className="text-xl p-3 mb-2 font-bold border-teal-500 border-b-2 rounded-b-md bg-[#6dfdde5d]">
               Recent Activities
@@ -144,7 +152,7 @@ const Notification = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Support Requests */}
 
@@ -152,24 +160,20 @@ const Notification = () => {
           <div className="border border-teal-500 mb-10 rounded-md">
             <div className="flex  items-center justify-between p-3 mb-2 font-bold border-teal-500 border-b-2 rounded-b-md bg-[#6dfdde5d] ">
               <p className="text-xl">Support Requests</p>
-              <FormControl sx={{ m: 1, minWidth: 150, }}>
-              <InputLabel id="demo-simple-select-autowidth-label">
-                Ticket
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select-autowidth"
-                autoWidth
-                label="Select Job"
-                
-              >
-                <MenuItem value="">
-                  <em>none</em>
-                </MenuItem>
-                <MenuItem value={"nurse"}>Nurse</MenuItem>
-                <MenuItem value={"manager"}>Manager</MenuItem>
-              </Select>
-            </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 150 }}>
+                <InputLabel id="demo-simple-select-autowidth-label">
+                  Ticket
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-autowidth-label"
+                  id="demo-simple-select-autowidth"
+                  autoWidth
+                  label="Select Job"
+                >
+                  <MenuItem value={"nurse"}>Nurse</MenuItem>
+                  <MenuItem value={"manager"}>Manager</MenuItem>
+                </Select>
+              </FormControl>
             </div>
 
             {ticket.map((item, index) => (
@@ -184,14 +188,13 @@ const Notification = () => {
                     <p className="text-gray-500">
                       {item.email} | {item.phoneNumber}
                     </p>
-                    <p className="text-gray-500">
-                      {item.message}
-                    </p>
-                   
+                    <p className="text-gray-500">{item.message}</p>
                   </div>
                 </div>
                 <div className="flex justify-center text-center">
-                <p className="text-gray-500">{ moment(item.updatedAt).fromNow()}</p>
+                  <p className="text-gray-500">
+                    {moment(item.updatedAt).fromNow()}
+                  </p>
                 </div>
               </div>
             ))}
@@ -204,7 +207,11 @@ const Notification = () => {
           <div className="border border-teal-500 mb-10 rounded-md">
             <div className="flex  items-center justify-between p-3 mb-2 font-bold border-teal-500 border-b-2 rounded-b-md bg-[#6dfdde5d] ">
               <p className="text-xl">New Users </p>
-              <Link to="/all-agency-admin" style={{ textDecoration: "none" }}>
+              <Link
+                href="/all-agency-admin"
+                style={{ textDecoration: "none" }}
+                className="cursor-pointer"
+              >
                 <p className="mr-5">View All</p>
               </Link>
             </div>

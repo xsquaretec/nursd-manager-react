@@ -36,34 +36,34 @@ export const sidebarAPI = [
       { name: "Bids", link: "/bids" },
     ],
   },
-  {
-    name: "Manage Fields",
-    icon: <TextFieldsIcon />,
-    menu: [
-      { name: "Nurse App Fields", link: "/nurse-app-fields" },
-      { name: "Manager App Fields", link: "/manager-app-fields" },
-    ],
-  },
+  // {
+  //   name: "Manage Fields",
+  //   icon: <TextFieldsIcon />,
+  //   menu: [
+  //     { name: "Nurse App Fields", link: "/nurse-app-fields" },
+  //     { name: "Manager App Fields", link: "/manager-app-fields" },
+  //   ],
+  // },
   {
     name: "Customer Support",
     icon: <SupportAgentIcon />,
     link: "/customer-support",
   },
-  {
-    name: "Mobile App Management",
-    icon: <AppSettingsAltIcon />,
-    link: "/superAdmin/appMaintenance",
-  },
-  {
-    name: "Notification",
-    icon: <NotificationsActiveIcon />,
-    link: "/notification",
-  },
-  {
-    name: "Reviews",
-    icon: <ReviewsIcon />,
-    link: "/reviews",
-  },
+  // {
+  //   name: "Mobile App Management",
+  //   icon: <AppSettingsAltIcon />,
+  //   link: "/superAdmin/appMaintenance",
+  // },
+  // {
+  //   name: "Notification",
+  //   icon: <NotificationsActiveIcon />,
+  //   link: "/notification",
+  // },
+  // {
+  //   name: "Reviews",
+  //   icon: <ReviewsIcon />,
+  //   link: "/reviews",
+  // },
   {
     name: "Logout",
     icon: <ExitToAppIcon />,

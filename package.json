@@ -1,7 +1,6 @@
 {
   "name": "nursd-manager",
   "version": "0.1.0",
-  "homepage": "http://nursd.jphedgefunding.info/",
   "private": true,
   "dependencies": {
     "@date-io/jalaali": "^2.16.1",

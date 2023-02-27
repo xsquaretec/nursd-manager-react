@@ -69,8 +69,6 @@ const Home = () => {
     getData();
   }, []);
 
-  console.log(pageData);
-
   const [loading, setLoading] = useState(true);
 
   return loading ? (
