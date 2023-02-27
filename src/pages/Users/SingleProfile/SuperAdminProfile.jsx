@@ -1,7 +1,16 @@
-import { Button, Modal, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  IconButton,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CreateIcon from "@mui/icons-material/Create";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../../context/auth";
 
 const style = {
   position: "absolute",
@@ -16,20 +25,55 @@ const style = {
 };
 
 const SuperAdminProfile = () => {
+  const auth = useAuth();
+  const [pageData, setPageData] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/adminManagerSingleProfile`,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => setPageData(res.data))
+      .then(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  return (
+  return loading ? (
+    "Loading..."
+  ) : (
     <>
       <Modal
+      sx={{border:"none"}}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <Typography sx={{marginBottom:5,color:"#13b493",fontSize:20,fontWeight: "bold"}}>Super Admin Profile</Typography>
+          <Typography
+            sx={{
+              marginBottom: 5,
+              color: "#13b493",
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+          >
+            Super Admin Profile
+          </Typography>
           <Box className="grid grid-cols-2 gap-10">
             <TextField
               id="outlined-basic"
@@ -41,20 +85,21 @@ const SuperAdminProfile = () => {
               label="Last Name"
               variant="outlined"
             />
-            <TextField
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Number"
-              variant="outlined"
-            />
+            <TextField id="outlined-basic" label="Email" variant="outlined" />
+            <TextField id="outlined-basic" label="Number" variant="outlined" />
           </Box>
-          <Button sx={{marginTop:5,backgroundColor:"#13b493",color:"white","&:hover":{
-            color:"#13b493",
-          }}}>Save</Button>
+          <Button
+            sx={{
+              marginTop: 5,
+              backgroundColor: "#13b493",
+              color: "white",
+              "&:hover": {
+                color: "#13b493",
+              },
+            }}
+          >
+            Save
+          </Button>
         </Box>
       </Modal>
       <Box className="p-10 flex flex-col gap-5">
@@ -72,10 +117,18 @@ const SuperAdminProfile = () => {
             <CreateIcon className="text-teal-500 border border-teal-500 p-[2px] text-2xl rounded-md" />
           </Button>
         </Box>
-        <Typography className="text-teal-500">First Name: <span className="text-black">prince </span></Typography>
-        <Typography className="text-teal-500">Last Name: <span className="text-black">Patel</span></Typography>
-        <Typography className="text-teal-500">Email: <span className="text-black">princepatel@gmail.com</span></Typography>
-        <Typography className="text-teal-500">Number: <span className="text-black">+910000000000</span></Typography>
+        <Typography className="text-teal-500">
+          First Name: <span className="text-black">{pageData.firstName} </span>
+        </Typography>
+        <Typography className="text-teal-500">
+          Last Name: <span className="text-black">{pageData.lastName}</span>
+        </Typography>
+        <Typography className="text-teal-500">
+          Email: <span className="text-black">{pageData.email}</span>
+        </Typography>
+        <Typography className="text-teal-500">
+          Number: <span className="text-black">{pageData.phoneNumber}</span>
+        </Typography>
       </Box>
     </>
   );
