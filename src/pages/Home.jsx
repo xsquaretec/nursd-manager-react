@@ -61,7 +61,9 @@ const Home = () => {
       },
     })
       .then((res) => res.json())
-      .then((res) => setPageData(res.data))
+      .then((res) => {
+        setPageData(res.data);
+      })
       .then(() => setLoading(false));
   };
 
@@ -89,7 +91,7 @@ const Home = () => {
           <Link to={"all-agency-admin"} style={{ textDecoration: "none" }}>
             <DashboardCard
               title="Total Agencies"
-              count={pageData?.totlaAgencyAdmin}
+              count={pageData?.dashBoardData?.totlaAgencyAdmin}
               icon={Agencies}
             />
           </Link>
@@ -98,13 +100,16 @@ const Home = () => {
           <Link to={"all-nurse"} style={{ textDecoration: "none" }}>
             <DashboardCard
               title="Total Nurses"
-              count={pageData?.totalNurse}
+              count={pageData?.dashBoardData?.totalNurse}
               icon={Nurse}
             />
           </Link>
         </Grid>
         <Grid item xs={4}>
-          <DashboardCard title="Total Jobs" count={pageData?.totalPostedJobs} />
+          <DashboardCard
+            title="Total Jobs"
+            count={pageData?.dashBoardData?.totalPostedJobs}
+          />
         </Grid>
       </Grid>
 
@@ -156,7 +161,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Notification />
+      <Notification ticket={pageData?.supportTicket} user={pageData?.letestRegisterUsers}  />
     </Box>
   );
 };
