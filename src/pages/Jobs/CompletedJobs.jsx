@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, ButtonGroup, IconButton, Link } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const CompletedJobs = () => {
   const auth = useAuth();
@@ -84,6 +85,24 @@ const CompletedJobs = () => {
         row.address.state +
         ", " +
         row.address.country,
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <ButtonGroup size="small" aria-label="small button group">
+              <Link to={`/agency-admin-profile/${params.row._id}`}>
+                <IconButton color="primary">
+                  {/* <RemoveRedEyeOutlinedIcon /> */}
+                </IconButton>
+              </Link>
+            </ButtonGroup>
+          </>
+        );
+      },
     },
   ];
 

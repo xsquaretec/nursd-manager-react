@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { Box, ButtonGroup, IconButton } from "@mui/material";
+import { Box, Button, ButtonGroup, IconButton, Modal, TextField, Typography } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import CreateIcon from '@mui/icons-material/Create';
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 800,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+
 
 const UnfulfilledJobs = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const auth = useAuth();
 
   const [pageData, setPageData] = useState([]);
@@ -150,6 +169,12 @@ const UnfulfilledJobs = () => {
               >
                 <CancelOutlinedIcon />
               </IconButton>
+              <IconButton
+                color="success"
+                onClick={handleOpen}
+              >
+                <CreateIcon />
+              </IconButton>
             </ButtonGroup>
           </>
         );
@@ -173,7 +198,77 @@ const UnfulfilledJobs = () => {
       });
   };
 
+
+
+
+
+  
+
   return (
+    
+    <>
+    <Modal
+      sx={{border:"none"}}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+            <Typography sx={{marginBottom:5,color:"#13b493",fontSize:20,fontWeight: "bold"}}>Unfulfilled Jobs Details</Typography>
+          <Box className="grid grid-cols-2 gap-10">
+            <TextField
+              id="outlined-basic"
+              label="Job ID"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Shift Title"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Shift Date"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Shift Time"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Duration"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Address"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Specialty"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Break"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Current Rate"
+              variant="outlined"
+              placeholder="$"
+            />
+          </Box>
+          <Button  sx={{marginTop:5,backgroundColor:"#13b493",color:"white","&:hover":{
+            color:"#13b493",
+          }}}>Save</Button>
+        </Box>
+      </Modal>
     <Box sx={{ height: "90%", width: "100%" }}>
       <Heading title="Unfulfilled Jobs Details" />
       <Box
@@ -203,6 +298,8 @@ const UnfulfilledJobs = () => {
         />
       </Box>
     </Box>
+    </>
+
   );
 };
 
