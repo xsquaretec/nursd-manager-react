@@ -181,9 +181,7 @@ const AddNewJobs = () => {
                 value={jobType}
                 onChange={(e) => setJobType(e.target.value)}
               >
-                <MenuItem value="">
-                  <em>none</em>
-                </MenuItem>
+                
                 <MenuItem value={"shift"}>Create Shift</MenuItem>
                 <MenuItem value={"visit"}>Create Visit</MenuItem>
               </Select>
@@ -206,9 +204,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               {pageData.primaryLicenseTypes.map((item, index) => (
                 <MenuItem key={index} value={item.value}>
                   {item.label}
@@ -240,9 +236,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               {pageData.specialtys.map((item, index) => (
                 <MenuItem key={index} value={item.value}>
                   {item.label}
@@ -268,9 +262,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               {pageData.certifications.map((item, index) => (
                 <MenuItem key={index} value={item.value}>
                   {item.label}
@@ -296,9 +288,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               {pageData.YearofExperience.map((item, index) => (
                 <MenuItem key={index} value={item.value}>
                   {item.label}
@@ -324,9 +314,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               {pageData.ExpirationInHour.map((item, index) => (
                 <MenuItem key={index} value={item.value}>
                   {item.label}
@@ -391,9 +379,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               {pageData.breaks.map((item, index) => (
                 <MenuItem key={index} value={item.value}>
                   {item.label}
@@ -416,9 +402,7 @@ const AddNewJobs = () => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
             >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
+
               <MenuItem value={10}>CNA</MenuItem>
               <MenuItem value={21}>Create Visit</MenuItem>
             </Select>
