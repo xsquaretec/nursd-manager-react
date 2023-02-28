@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, ButtonGroup, IconButton, Modal, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import CreateIcon from '@mui/icons-material/Create';
+import CreateIcon from "@mui/icons-material/Create";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -19,8 +28,6 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-
 
 const UnfulfilledJobs = () => {
   const [open, setOpen] = React.useState(false);
@@ -155,26 +162,11 @@ const UnfulfilledJobs = () => {
         return (
           <>
             <ButtonGroup size="small" aria-label="small button group">
-              {/* <IconButton
-                color="primary"
-                onClick={() =>
-                  AcceptBid(params.row.jobId._id, params.row.managerId._id)
-                }
-              >
-                <CheckCircleOutlineOutlinedIcon />
-              </IconButton> */}
-              <IconButton
-                color="error"
-                onClick={() => RejectJob(params.row._id)}
-              >
-                <CancelOutlinedIcon />
-              </IconButton>
-              <IconButton
-                color="success"
-                onClick={handleOpen}
-              >
-                <CreateIcon />
-              </IconButton>
+              <Link to={`/single-job/${params.id}`}>
+                <IconButton color="primary">
+                  <RemoveRedEyeOutlinedIcon />
+                </IconButton>
+              </Link>
             </ButtonGroup>
           </>
         );
@@ -198,30 +190,28 @@ const UnfulfilledJobs = () => {
       });
   };
 
-
-
-
-
-  
-
   return (
-    
     <>
-    <Modal
-      sx={{border:"none"}}
+      <Modal
+        sx={{ border: "none" }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <Typography sx={{marginBottom:5,color:"#13b493",fontSize:20,fontWeight: "bold"}}>Unfulfilled Jobs Details</Typography>
+          <Typography
+            sx={{
+              marginBottom: 5,
+              color: "#13b493",
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+          >
+            Unfulfilled Jobs Details
+          </Typography>
           <Box className="grid grid-cols-2 gap-10">
-            <TextField
-              id="outlined-basic"
-              label="Job ID"
-              variant="outlined"
-            />
+            <TextField id="outlined-basic" label="Job ID" variant="outlined" />
             <TextField
               id="outlined-basic"
               label="Shift Title"
@@ -242,21 +232,13 @@ const UnfulfilledJobs = () => {
               label="Duration"
               variant="outlined"
             />
-            <TextField
-              id="outlined-basic"
-              label="Address"
-              variant="outlined"
-            />
+            <TextField id="outlined-basic" label="Address" variant="outlined" />
             <TextField
               id="outlined-basic"
               label="Specialty"
               variant="outlined"
             />
-            <TextField
-              id="outlined-basic"
-              label="Break"
-              variant="outlined"
-            />
+            <TextField id="outlined-basic" label="Break" variant="outlined" />
             <TextField
               id="outlined-basic"
               label="Current Rate"
@@ -264,42 +246,50 @@ const UnfulfilledJobs = () => {
               placeholder="$"
             />
           </Box>
-          <Button  sx={{marginTop:5,backgroundColor:"#13b493",color:"white","&:hover":{
-            color:"#13b493",
-          }}}>Save</Button>
+          <Button
+            sx={{
+              marginTop: 5,
+              backgroundColor: "#13b493",
+              color: "white",
+              "&:hover": {
+                color: "#13b493",
+              },
+            }}
+          >
+            Save
+          </Button>
         </Box>
       </Modal>
-    <Box sx={{ height: "90%", width: "100%" }}>
-      <Heading title="Unfulfilled Jobs Details" />
-      <Box
-        sx={{
-          height: "100%",
-          "& .bg": {
-            bgcolor: "#ff000011",
-          },
-        }}
-      >
-        <DataGrid
-          sx={{ height: "100%" }}
-          rows={pageData}
-          columns={columns}
-          getRowId={(row) => row._id}
-          autoPageSize
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-          components={{
-            Toolbar: GridToolbar,
-            NoRowsOverlay: NoRows,
+      <Box sx={{ height: "90%", width: "100%" }}>
+        <Heading title="Unfulfilled Jobs Details" />
+        <Box
+          sx={{
+            height: "100%",
+            "& .bg": {
+              bgcolor: "#ff000011",
+            },
           }}
-          loading={loading}
-          getRowClassName={(params) =>
-            moment(params.row.endDate).isBefore() ? `bg` : ""
-          }
-        />
+        >
+          <DataGrid
+            sx={{ height: "100%" }}
+            rows={pageData}
+            columns={columns}
+            getRowId={(row) => row._id}
+            autoPageSize
+            disableSelectionOnClick
+            experimentalFeatures={{ newEditingApi: true }}
+            components={{
+              Toolbar: GridToolbar,
+              NoRowsOverlay: NoRows,
+            }}
+            loading={loading}
+            getRowClassName={(params) =>
+              moment(params.row.endDate).isBefore() ? `bg` : ""
+            }
+          />
+        </Box>
       </Box>
-    </Box>
     </>
-
   );
 };
 

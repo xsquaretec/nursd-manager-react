@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, ButtonGroup, IconButton, Link } from "@mui/material";
+import { Box, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import { Link } from "react-router-dom";
 
 const CompletedJobs = () => {
   const auth = useAuth();
@@ -13,11 +14,14 @@ const CompletedJobs = () => {
   const [pageData, setPageData] = useState([]);
 
   const getData = async () => {
-    await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job?jobStatus=completed`, {
-      headers: {
-        Authorization: `Bearer ${auth.user}`,
-      },
-    })
+    await fetch(
+      `${process.env.REACT_APP_PUBLIC_BACKEND_URL}/job?jobStatus=completed`,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.user}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((res) => setPageData(res.data))
       .then(() => setLoading(false));
@@ -28,7 +32,7 @@ const CompletedJobs = () => {
   }, []);
 
   const columns = [
-    { field: "jobID", headerName: "Job ID", width: 50 },
+    { field: "jobID", headerName: "Job ID", width: 100 },
     { field: "shiftTitle", headerName: "Shift Title", width: 200 },
     {
       field: "startDate",
@@ -70,22 +74,6 @@ const CompletedJobs = () => {
         );
       },
     },
-
-    {
-      field: "Address",
-      headerName: "Address",
-      flex: 1,
-      valueGetter: ({ row }) =>
-        row.address.street +
-        " " +
-        row.address.city +
-        " " +
-        row.address.zip +
-        " " +
-        row.address.state +
-        ", " +
-        row.address.country,
-    },
     {
       field: "action",
       headerName: "Action",
@@ -94,9 +82,9 @@ const CompletedJobs = () => {
         return (
           <>
             <ButtonGroup size="small" aria-label="small button group">
-              <Link to={`/agency-admin-profile/${params.row._id}`}>
+              <Link to={`/single-job/${params.id}`}>
                 <IconButton color="primary">
-                  {/* <RemoveRedEyeOutlinedIcon /> */}
+                  <RemoveRedEyeOutlinedIcon />
                 </IconButton>
               </Link>
             </ButtonGroup>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
+import { Link } from "react-router-dom";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
 const AcceptedJobs = () => {
   const auth = useAuth();
@@ -30,7 +32,7 @@ const AcceptedJobs = () => {
   }, []);
 
   const columns = [
-    { field: "jobID", headerName: "Job ID", width: 50 },
+    { field: "jobID", headerName: "Job ID", width: 100 },
     { field: "shiftTitle", headerName: "Shift Title", width: 200 },
     {
       field: "expirationDate",
@@ -93,55 +95,21 @@ const AcceptedJobs = () => {
     },
 
     {
-      field: "Address",
-      headerName: "Address",
-      flex: 1,
-      valueGetter: ({ row }) =>
-        row.address.street +
-        " " +
-        row.address.city +
-        " " +
-        row.address.zip +
-        " " +
-        row.address.state +
-        ", " +
-        row.address.country,
-    },
-    {
-      field: "specialty",
-      headerName: "specialty",
-      width: 200,
+      field: "action",
+      headerName: "Action",
+      sortable: false,
       renderCell: (params) => {
         return (
-          <div className="flex gap-1">
-            {params.value.map((item, index) => (
-              <p
-                className="bg-[#0db391] text-white font-bold p-1 rounded-md text-xs"
-                key={index}
-              >
-                {item}
-              </p>
-            ))}
-          </div>
+          <>
+            <ButtonGroup size="small" aria-label="small button group">
+              <Link to={`/single-job/${params.id}`}>
+                <IconButton color="primary">
+                  <RemoveRedEyeOutlinedIcon />
+                </IconButton>
+              </Link>
+            </ButtonGroup>
+          </>
         );
-      },
-    },
-
-    {
-      field: "break",
-      headerName: "Break",
-      width: 70,
-      renderCell: (params) => {
-        return params.value + " mins";
-      },
-    },
-
-    {
-      field: "baseRate",
-      headerName: "Current Rate",
-      width: 100,
-      renderCell: (params) => {
-        return <p className="text-[#278d44] font-bold">$ {params.value}/hr</p>;
       },
     },
   ];

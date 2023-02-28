@@ -31,7 +31,6 @@ const NurseDetails = () => {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setPageData(res.data);
       })
       .then(() => setLoading(false));
@@ -41,7 +40,7 @@ const NurseDetails = () => {
     getData();
   }, [pathname, auth]);
 
-  console.log(pageData, "pagedata");
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [loading, setLoading] = useState(true);

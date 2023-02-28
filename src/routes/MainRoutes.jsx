@@ -25,6 +25,7 @@ import Manager from "../pages/Users/SingleProfile/Manager";
 import AgencyAdminProfile from "../pages/Users/SingleProfile/AgencyAdminProfile";
 import Bids from "../pages/Jobs/Bids";
 import SuperAdminProfile from "../pages/Users/SingleProfile/SuperAdminProfile";
+import SingleJobView from "../pages/Jobs/SingleJobView";
 
 const MainRoutes = () => {
   const [theme, colorMode] = useMode();
@@ -99,8 +100,13 @@ const MainRoutes = () => {
                     element={<UnfulfilledJobs />}
                   />
 
+                  <Route path="/single-job/:str" element={<SingleJobView />} />
+
                   {/* Profile Routes */}
-                  <Route path="/superadmin-profile" element={<SuperAdminProfile />} />
+                  <Route
+                    path="/superadmin-profile"
+                    element={<SuperAdminProfile />}
+                  />
                 </Routes>
               </PerfectScrollbar>
             </Box>
