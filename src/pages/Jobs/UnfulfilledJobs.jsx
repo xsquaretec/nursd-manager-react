@@ -13,9 +13,9 @@ import Heading from "../../components/Heading";
 import moment from "moment";
 import NoRows from "../../components/NoRows";
 import { useAuth } from "../../context/auth";
-import CreateIcon from "@mui/icons-material/Create";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { Link } from "react-router-dom";
+import EditIcon from '@mui/icons-material/Edit';
 
 const style = {
   position: "absolute",
@@ -100,60 +100,6 @@ const UnfulfilledJobs = () => {
         );
       },
     },
-
-    {
-      field: "Address",
-      headerName: "Address",
-      // flex: 1,
-      width: 200,
-      valueGetter: ({ row }) =>
-        row.address.street +
-        " " +
-        row.address.city +
-        " " +
-        row.address.zip +
-        " " +
-        row.address.state +
-        ", " +
-        row.address.country,
-    },
-    {
-      field: "specialty",
-      headerName: "specialty",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="flex gap-1">
-            {params.value.map((item, index) => (
-              <p
-                className="bg-[#0db391] text-white font-bold p-1 rounded-md text-xs"
-                key={index}
-              >
-                {item}
-              </p>
-            ))}
-          </div>
-        );
-      },
-    },
-
-    {
-      field: "break",
-      headerName: "Break",
-      width: 70,
-      renderCell: (params) => {
-        return params.value + " mins";
-      },
-    },
-
-    {
-      field: "baseRate",
-      headerName: "Current Rate",
-      width: 100,
-      renderCell: (params) => {
-        return <p className="text-[#278d44] font-bold">$ {params.value}/hr</p>;
-      },
-    },
     {
       field: "action",
       headerName: "Action",
@@ -165,6 +111,11 @@ const UnfulfilledJobs = () => {
               <Link to={`/single-job/${params.id}`}>
                 <IconButton color="primary">
                   <RemoveRedEyeOutlinedIcon />
+                </IconButton>
+              </Link>
+              <Link to={`/edit-job/${params.id}`}>
+                <IconButton color="primary">
+                  <EditIcon />
                 </IconButton>
               </Link>
             </ButtonGroup>
